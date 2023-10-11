@@ -1,7 +1,9 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using Dapper;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +34,22 @@ namespace Test.Database
                     cmd.Parameters.Add(new SqliteParameter("@Location", emission.Location));
                     cmd.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public List<EmissionModel> GetAllEmissions()
+        {
+            List<EmissionModel> emissions = new List<EmissionModel>();
+            using (IDbConnection cnn = new SQLiteConnection(_connectionString))
+            {
+                var EmissionsFromDb = cnn.Query<EmissionModel>("Select Id AS ID, Source, Unit, Value, Location from EmissionsTbl").ToList();
+
+                foreach (var emission in EmissionsFromDb)
+                {
+                    emission.Value = Convert.ToDouble(emission.Value);
+                }
+
+                return EmissionsFromDb;
             }
         }
     }

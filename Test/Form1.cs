@@ -1,4 +1,5 @@
 using System.Configuration;
+using Test.Models;
 using Test.Presenters;
 using Test.Views;
 
@@ -15,9 +16,11 @@ namespace Test
             _presenter.SetView(this);
 
             AddButton.Click += (sender, e) => AddButtonClicked?.Invoke(sender, e);
+            DisplayButton.Click += (sender, e) => DisplayButtonClicked?.Invoke(sender, e);
+            
         }
 
-        public string LoadConnectionString (string id = "Default")
+        public string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
@@ -45,11 +48,19 @@ namespace Test
 
 
         public event EventHandler AddButtonClicked;
+        public event EventHandler DisplayButtonClicked;
 
         public void ShowMessage(string message)
         {
             _ = MessageBox.Show(message);
         }
+
+        public void DisplayData(List<EmissionModel> emissions)
+        {
+            EmissionsGrid.DataSource = emissions;
+        }
+
+        
     }
 
 

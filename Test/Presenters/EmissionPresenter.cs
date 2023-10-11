@@ -23,6 +23,24 @@ namespace Test.Presenters
         {
             _view = view;
             _view.AddButtonClicked += AddRecord;
+            _view.DisplayButtonClicked += GetAll;
+        }
+
+        private void GetAll(object? sender, EventArgs e)
+        {
+            try
+            {
+                List<EmissionModel> emissions = _dbConnector.GetAllEmissions();
+                _view.DisplayData(emissions);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Błąd konwersji " + ex.Message);
+            }
+            catch (InvalidCastException ex)
+            {
+                MessageBox.Show("Błąd rzutowania " + ex.Message);
+            }
         }
 
         private void AddRecord(object? sender, EventArgs e)

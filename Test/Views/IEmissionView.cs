@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Test.Models;
 
 namespace Test.Views
 {
@@ -14,6 +15,9 @@ namespace Test.Views
         public string Location { get; set; }
 
         event EventHandler AddButtonClicked;
+        event EventHandler DisplayButtonClicked;
+
+        void DisplayData(List<EmissionModel> emissions);
 
         void ShowMessage(string message);
     }
