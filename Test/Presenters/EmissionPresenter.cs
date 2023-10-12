@@ -26,15 +26,27 @@ namespace Test.Presenters
             _view.AddButtonClicked += AddRecord;
             _view.AddButtonClicked += GetAll;
             _view.FormLoaded += GetAll;
-            
+            _view.EmissionChangeFormLoaded += ChangeEmission;
         }
 
-        //Kliknięcie przycisku GetAll
+        
+        // Uruchomienie formy zmieniającej emisje
+        private void ChangeEmission(object? sender, EventArgs e)
+        {
+            EmissionChangeForm emissionChangeForm = new EmissionChangeForm();
+            emissionChangeForm.Show();
+
+            //DODAC DALSZĄ CZĘŚĆ FUNKCJI, DODAĆ 
+        }
+
+        // Kliknięcie przycisku GetAll
         private void GetAll(object? sender, EventArgs e)
         {
             try
             {   //listę emisji z bazy muszę gdzieś zapisać -> tworze listę, interakcja z Widokiem
                 List<EmissionModel> emissions = _dbConnector.GetAllEmissions();
+
+                // Metoda DisplayData po swoim wykonaniu czyści również formę
                 _view.DisplayData(emissions);
             }
             catch (FormatException ex)

@@ -25,6 +25,8 @@ namespace Test.Database
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
+
+        // Dodawanie emisji do grida na pierwszej formie
         public void AddRecord(EmissionModel emission)
         {
             using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
@@ -42,6 +44,7 @@ namespace Test.Database
             }
         }
 
+        // Pobieranie danych o emisjach żeby dodać je do grida na pierwszej formie
         public List<EmissionModel> GetAllEmissions()
         {
             List<EmissionModel> emissions = new List<EmissionModel>();
@@ -57,5 +60,7 @@ namespace Test.Database
                 return EmissionsFromDb;
             }
         }
+
+        //UPDATE RECORDU Z POZIOMU CHANGEFORMY
     }
 }

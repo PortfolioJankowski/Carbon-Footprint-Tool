@@ -1,4 +1,5 @@
 using System.Configuration;
+using System.Windows.Forms;
 using Test.Database;
 using Test.Models;
 using Test.Presenters;
@@ -14,11 +15,12 @@ namespace Test
         //Eventy
         public event EventHandler AddButtonClicked;
         public event EventHandler FormLoaded;
+        public event EventHandler EmissionChangeFormLoaded;
 
         public Form1()
         {
             InitializeComponent();
-            
+
 
             //Tworzê prezenter w konstruktorze -> wywo³uje metodê SetView: przypisuje Eventy do metod z prezentera
             _presenter = new EmissionPresenter(new Database.DBConnector());
@@ -27,13 +29,14 @@ namespace Test
 
             AddButton.Click += (sender, e) => AddButtonClicked?.Invoke(sender, e);
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
+            ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
 
         }
 
 
 
         //Metoda (chyba nie powinna tu byæ) -> pobieranie ConnectionStringa
-       
+
 
         //Pobieranie danych z Textboxów z formy
         public string Source
@@ -60,20 +63,41 @@ namespace Test
 
 
 
-
+        // Wyœwietlanie Komunikatów o dodawaniu do grida na pierwszej formie
         public void ShowMessage(string message)
         {
             _ = MessageBox.Show(message);
         }
 
+        //Metoda wykonuj¹ca siê przy otwarciu formy oraz przyciœniêciu Add
         public void DisplayData(List<EmissionModel> emissions)
         {
+            //Czyszczenie formy
+            SourceText.Text = "";
+            UnitText.Text = "";
+            ValueText.Text = "";
+            LocationText.Text = "";
+
+            //Ustawienia grida
             EmissionsGrid.DataSource = emissions;
             EmissionsGrid.ReadOnly = true;
             EmissionsGrid.BackgroundColor = Color.Beige;
             EmissionsGrid.ForeColor = Color.Black;
             EmissionsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
+        }
+
+        private void EmissionsGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (EmissionsGrid.SelectedRows.Count > 0)
+            {
+                ChangeButton.Enabled = true;
+            }
+            else
+            {
+                // Dezaktywuj przycisk, poniewa¿ nie ma zaznaczonego wiersza
+                ChangeButton.Enabled = false;
+            }
         }
     }
 

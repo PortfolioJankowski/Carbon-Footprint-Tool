@@ -59,39 +59,39 @@
             // 
             // SourceText
             // 
-            SourceText.Location = new Point(26, 162);
+            SourceText.Location = new Point(26, 139);
             SourceText.Name = "SourceText";
             SourceText.Size = new Size(125, 27);
-            SourceText.TabIndex = 0;
+            SourceText.TabIndex = 1;
             // 
             // UnitText
             // 
-            UnitText.Location = new Point(26, 224);
+            UnitText.Location = new Point(26, 201);
             UnitText.Name = "UnitText";
             UnitText.Size = new Size(125, 27);
-            UnitText.TabIndex = 0;
+            UnitText.TabIndex = 2;
             // 
             // ValueText
             // 
-            ValueText.Location = new Point(26, 292);
+            ValueText.Location = new Point(26, 269);
             ValueText.Name = "ValueText";
             ValueText.Size = new Size(125, 27);
-            ValueText.TabIndex = 0;
+            ValueText.TabIndex = 3;
             // 
             // LocationText
             // 
-            LocationText.Location = new Point(26, 350);
+            LocationText.Location = new Point(26, 327);
             LocationText.Name = "LocationText";
             LocationText.Size = new Size(125, 27);
-            LocationText.TabIndex = 0;
+            LocationText.TabIndex = 4;
             // 
             // AddButton
             // 
             AddButton.ImageAlign = ContentAlignment.TopRight;
-            AddButton.Location = new Point(44, 392);
+            AddButton.Location = new Point(44, 369);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(94, 29);
-            AddButton.TabIndex = 1;
+            AddButton.TabIndex = 5;
             AddButton.Text = "Add";
             AddButton.UseVisualStyleBackColor = true;
             // 
@@ -100,12 +100,13 @@
             EmissionsGrid.BackgroundColor = SystemColors.ActiveCaption;
             EmissionsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             EmissionsGrid.GridColor = SystemColors.ActiveCaptionText;
-            EmissionsGrid.Location = new Point(181, 139);
+            EmissionsGrid.Location = new Point(181, 110);
             EmissionsGrid.Name = "EmissionsGrid";
             EmissionsGrid.RowHeadersWidth = 51;
             EmissionsGrid.RowTemplate.Height = 29;
             EmissionsGrid.Size = new Size(554, 299);
             EmissionsGrid.TabIndex = 2;
+            EmissionsGrid.SelectionChanged += EmissionsGrid_SelectionChanged;
             // 
             // sqliteCommand1
             // 
@@ -118,7 +119,7 @@
             // 
             SourceLabel.AutoSize = true;
             SourceLabel.ForeColor = Color.Black;
-            SourceLabel.Location = new Point(22, 139);
+            SourceLabel.Location = new Point(22, 116);
             SourceLabel.Name = "SourceLabel";
             SourceLabel.Size = new Size(54, 20);
             SourceLabel.TabIndex = 3;
@@ -128,7 +129,7 @@
             // 
             UnitLabel.AutoSize = true;
             UnitLabel.ForeColor = Color.Black;
-            UnitLabel.Location = new Point(26, 201);
+            UnitLabel.Location = new Point(26, 178);
             UnitLabel.Name = "UnitLabel";
             UnitLabel.Size = new Size(36, 20);
             UnitLabel.TabIndex = 3;
@@ -138,7 +139,7 @@
             // 
             ValueLabel.AutoSize = true;
             ValueLabel.ForeColor = Color.Black;
-            ValueLabel.Location = new Point(26, 269);
+            ValueLabel.Location = new Point(26, 246);
             ValueLabel.Name = "ValueLabel";
             ValueLabel.Size = new Size(45, 20);
             ValueLabel.TabIndex = 3;
@@ -148,7 +149,7 @@
             // 
             LocationLabel.AutoSize = true;
             LocationLabel.ForeColor = Color.Black;
-            LocationLabel.Location = new Point(26, 327);
+            LocationLabel.Location = new Point(26, 304);
             LocationLabel.Name = "LocationLabel";
             LocationLabel.Size = new Size(66, 20);
             LocationLabel.TabIndex = 3;
@@ -156,7 +157,7 @@
             // 
             // DeleteButton
             // 
-            DeleteButton.Location = new Point(756, 276);
+            DeleteButton.Location = new Point(756, 253);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(94, 59);
             DeleteButton.TabIndex = 4;
@@ -165,7 +166,7 @@
             // 
             // ImportButton
             // 
-            ImportButton.Location = new Point(756, 139);
+            ImportButton.Location = new Point(756, 116);
             ImportButton.Name = "ImportButton";
             ImportButton.Size = new Size(94, 59);
             ImportButton.TabIndex = 4;
@@ -174,7 +175,8 @@
             // 
             // ChangeButton
             // 
-            ChangeButton.Location = new Point(756, 208);
+            ChangeButton.Enabled = false;
+            ChangeButton.Location = new Point(756, 185);
             ChangeButton.Name = "ChangeButton";
             ChangeButton.Size = new Size(94, 59);
             ChangeButton.TabIndex = 4;
@@ -184,7 +186,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(756, 345);
+            pictureBox1.Location = new Point(756, 322);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(101, 93);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -225,7 +227,7 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(-17, -1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(887, 114);
+            panel1.Size = new Size(887, 86);
             panel1.TabIndex = 8;
             // 
             // pictureBox3
@@ -255,7 +257,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(43, 26);
+            label1.Location = new Point(43, 32);
             label1.Name = "label1";
             label1.Size = new Size(358, 31);
             label1.TabIndex = 3;
@@ -266,7 +268,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(869, 444);
+            ClientSize = new Size(869, 431);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Controls.Add(ImportButton);
@@ -284,6 +286,7 @@
             Controls.Add(SourceText);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Carbon Footprint Tool";
             ((System.ComponentModel.ISupportInitialize)EmissionsGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

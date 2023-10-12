@@ -19,6 +19,7 @@ namespace Test.Views
 
         event EventHandler AddButtonClicked;
         event EventHandler FormLoaded;
+        event EventHandler EmissionChangeFormLoaded;
 
         void DisplayData(List<EmissionModel> emissions);
 
