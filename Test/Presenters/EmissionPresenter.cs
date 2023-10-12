@@ -27,16 +27,21 @@ namespace Test.Presenters
             _view.AddButtonClicked += GetAll;
             _view.FormLoaded += GetAll;
             _view.EmissionChangeFormLoaded += ChangeEmission;
+            
         }
 
-        
+
+
         // Uruchomienie formy zmieniającej emisje
         private void ChangeEmission(object? sender, EventArgs e)
-        {
-            EmissionChangeForm emissionChangeForm = new EmissionChangeForm();
-            emissionChangeForm.Show();
+        {      
+                // Przypisuje do zmiennej Tupla z zaznaczonym recordem
+                var selectedRecordTuple = _view.GetRecord();
 
-            //DODAC DALSZĄ CZĘŚĆ FUNKCJI, DODAĆ 
+                // Biorę z tupla pojedyncze itemy i wrzucam je do konstruktora, który przypisze je do odpowiednich pól
+                EmissionChangeForm emissionChangeForm = new EmissionChangeForm(selectedRecordTuple.Col2, selectedRecordTuple.Col3, selectedRecordTuple.Col4, selectedRecordTuple.Col5, selectedRecordTuple.Col1);
+                emissionChangeForm.Show();
+
         }
 
         // Kliknięcie przycisku GetAll

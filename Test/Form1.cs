@@ -35,8 +35,6 @@ namespace Test
 
 
 
-        //Metoda (chyba nie powinna tu byæ) -> pobieranie ConnectionStringa
-
 
         //Pobieranie danych z Textboxów z formy
         public string Source
@@ -87,17 +85,37 @@ namespace Test
 
         }
 
-        private void EmissionsGrid_SelectionChanged(object sender, EventArgs e)
+        // Manipulacja guziczkiem - zabawa joystickiem
+        public bool isRecordSelected()
         {
             if (EmissionsGrid.SelectedRows.Count > 0)
             {
                 ChangeButton.Enabled = true;
+                return true;
             }
             else
             {
-                // Dezaktywuj przycisk, poniewa¿ nie ma zaznaczonego wiersza
                 ChangeButton.Enabled = false;
+                return false;
             }
+        }
+
+        // Pobieranie danych o recordzie z grida
+        public (string Col1, string Col2, string Col3, string Col4, string Col5) GetRecord()
+        {
+            string col1 = EmissionsGrid.SelectedRows[0].Cells["ID"].Value.ToString();
+            string col2 = EmissionsGrid.SelectedRows[0].Cells["Source"].Value.ToString();
+            string col3 = EmissionsGrid.SelectedRows[0].Cells["Unit"].Value.ToString();
+            string col4 = EmissionsGrid.SelectedRows[0].Cells["Value"].Value.ToString();
+            string col5 = EmissionsGrid.SelectedRows[0].Cells["Location"].Value.ToString();
+
+            return (col1, col2, col3, col4, col5);
+        }
+
+        private void EmissionsGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            _ = EmissionsGrid.SelectedRows.Count > 0 ? ChangeButton.Enabled = true : ChangeButton.Enabled = false;
+            
         }
     }
 

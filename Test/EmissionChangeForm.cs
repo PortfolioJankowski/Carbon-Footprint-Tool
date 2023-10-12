@@ -13,13 +13,25 @@ namespace Test
 {
     public partial class EmissionChangeForm : Form, IEmissionChangeView
     {
-        public EmissionChangeForm()
-        {
+        //Deklaruje sobie zmienną, do której przesyłam ID zaznaczonego rekordu
+        private int _id;
+        private string _temporaryId;
+
+        public EmissionChangeForm(string SourceFromDB, string UnitFromDB, string ValueFromDB, string LocationFromDB, string IdFromDB)
+        { 
             InitializeComponent();
+
+            // Przypisuje wartości z grida do textboxów
+            _temporaryId = IdFromDB;
+            _id = int.Parse(_temporaryId);
+            ChangeSourceText.Text = SourceFromDB;
+            ChangeUnitText.Text = UnitFromDB;
+            ChangeValueText.Text = ValueFromDB;
+            ChangeLocationText.Text = LocationFromDB;
         }
 
         public string Source
-        {
+        {   
             get => ChangeSourceText.Text;
             set => ChangeSourceText.Text = value;
         }
@@ -39,6 +51,7 @@ namespace Test
             get => ChangeLocationText.Text;
             set => ChangeLocationText.Text = value;
         }
+   
 
         public event EventHandler SubmitButtonClicked;
     }

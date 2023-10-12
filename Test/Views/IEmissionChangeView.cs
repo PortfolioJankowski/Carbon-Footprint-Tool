@@ -8,6 +8,7 @@ namespace Test.Views
 {
     public interface IEmissionChangeView
     {
+
         string Source { get; set; }
         string Unit { get; set; }   
         double Value { get; set; }
