@@ -19,17 +19,21 @@ namespace Test.Presenters
         {
             _dbConnector = dBConnector;
         }
+        //Obsługa eventow z View
         public void SetView(IEmissionView view)
         {
             _view = view;
             _view.AddButtonClicked += AddRecord;
-            _view.DisplayButtonClicked += GetAll;
+            _view.AddButtonClicked += GetAll;
+            _view.FormLoaded += GetAll;
+            
         }
 
+        //Kliknięcie przycisku GetAll
         private void GetAll(object? sender, EventArgs e)
         {
             try
-            {
+            {   //listę emisji z bazy muszę gdzieś zapisać -> tworze listę, interakcja z Widokiem
                 List<EmissionModel> emissions = _dbConnector.GetAllEmissions();
                 _view.DisplayData(emissions);
             }
@@ -47,13 +51,13 @@ namespace Test.Presenters
         {
             try
             {
-                // Przygotuj dane do zapisu
+                // Do zadeklarowanych danych pobieram wartości z bazy
                 string source = _view.Source;
                 string unit = _view.Unit;
                 double value = _view.Value;
                 string location = _view.Location;
 
-                // Dodaj rekord do bazy danych
+                // Tworzę obiekt i wrzucam go do metody dodającej record
                 EmissionModel emission = new EmissionModel { Source = source, Unit = unit, Value = value, Location = location };
                 _dbConnector.AddRecord(emission);
 

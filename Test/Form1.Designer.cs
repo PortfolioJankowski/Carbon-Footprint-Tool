@@ -28,41 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             SourceText = new TextBox();
             UnitText = new TextBox();
             ValueText = new TextBox();
             LocationText = new TextBox();
             AddButton = new Button();
             EmissionsGrid = new DataGridView();
-            DisplayButton = new Button();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+            SourceLabel = new Label();
+            UnitLabel = new Label();
+            ValueLabel = new Label();
+            LocationLabel = new Label();
+            DeleteButton = new Button();
+            ImportButton = new Button();
+            ChangeButton = new Button();
+            pictureBox1 = new PictureBox();
+            CalculationsButton = new Button();
+            FactorsButton = new Button();
+            panel1 = new Panel();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)EmissionsGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // SourceText
             // 
-            SourceText.Location = new Point(26, 35);
+            SourceText.Location = new Point(26, 162);
             SourceText.Name = "SourceText";
             SourceText.Size = new Size(125, 27);
             SourceText.TabIndex = 0;
             // 
             // UnitText
             // 
-            UnitText.Location = new Point(26, 83);
+            UnitText.Location = new Point(26, 224);
             UnitText.Name = "UnitText";
             UnitText.Size = new Size(125, 27);
             UnitText.TabIndex = 0;
             // 
             // ValueText
             // 
-            ValueText.Location = new Point(26, 132);
+            ValueText.Location = new Point(26, 292);
             ValueText.Name = "ValueText";
             ValueText.Size = new Size(125, 27);
             ValueText.TabIndex = 0;
             // 
             // LocationText
             // 
-            LocationText.Location = new Point(26, 180);
+            LocationText.Location = new Point(26, 350);
             LocationText.Name = "LocationText";
             LocationText.Size = new Size(125, 27);
             LocationText.TabIndex = 0;
@@ -70,7 +88,7 @@
             // AddButton
             // 
             AddButton.ImageAlign = ContentAlignment.TopRight;
-            AddButton.Location = new Point(40, 225);
+            AddButton.Location = new Point(44, 392);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(94, 29);
             AddButton.TabIndex = 1;
@@ -80,23 +98,12 @@
             // EmissionsGrid
             // 
             EmissionsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            EmissionsGrid.Location = new Point(258, 81);
+            EmissionsGrid.Location = new Point(181, 139);
             EmissionsGrid.Name = "EmissionsGrid";
             EmissionsGrid.RowHeadersWidth = 51;
             EmissionsGrid.RowTemplate.Height = 29;
-            EmissionsGrid.Size = new Size(528, 276);
+            EmissionsGrid.Size = new Size(554, 299);
             EmissionsGrid.TabIndex = 2;
-            // 
-            // DisplayButton
-            // 
-            DisplayButton.ImageAlign = ContentAlignment.TopRight;
-            DisplayButton.Location = new Point(258, 372);
-            DisplayButton.Name = "DisplayButton";
-            DisplayButton.Size = new Size(94, 29);
-            DisplayButton.TabIndex = 1;
-            DisplayButton.Text = "Display";
-            DisplayButton.UseVisualStyleBackColor = true;
-            
             // 
             // sqliteCommand1
             // 
@@ -105,21 +112,183 @@
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
+            // SourceLabel
+            // 
+            SourceLabel.AutoSize = true;
+            SourceLabel.ForeColor = Color.Black;
+            SourceLabel.Location = new Point(22, 139);
+            SourceLabel.Name = "SourceLabel";
+            SourceLabel.Size = new Size(54, 20);
+            SourceLabel.TabIndex = 3;
+            SourceLabel.Text = "Source";
+            // 
+            // UnitLabel
+            // 
+            UnitLabel.AutoSize = true;
+            UnitLabel.ForeColor = Color.Black;
+            UnitLabel.Location = new Point(26, 201);
+            UnitLabel.Name = "UnitLabel";
+            UnitLabel.Size = new Size(36, 20);
+            UnitLabel.TabIndex = 3;
+            UnitLabel.Text = "Unit";
+            // 
+            // ValueLabel
+            // 
+            ValueLabel.AutoSize = true;
+            ValueLabel.ForeColor = Color.Black;
+            ValueLabel.Location = new Point(26, 269);
+            ValueLabel.Name = "ValueLabel";
+            ValueLabel.Size = new Size(45, 20);
+            ValueLabel.TabIndex = 3;
+            ValueLabel.Text = "Value";
+            // 
+            // LocationLabel
+            // 
+            LocationLabel.AutoSize = true;
+            LocationLabel.ForeColor = Color.Black;
+            LocationLabel.Location = new Point(26, 327);
+            LocationLabel.Name = "LocationLabel";
+            LocationLabel.Size = new Size(66, 20);
+            LocationLabel.TabIndex = 3;
+            LocationLabel.Text = "Location";
+            // 
+            // DeleteButton
+            // 
+            DeleteButton.Location = new Point(756, 276);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(94, 59);
+            DeleteButton.TabIndex = 4;
+            DeleteButton.Text = "Delete record";
+            DeleteButton.UseVisualStyleBackColor = true;
+            // 
+            // ImportButton
+            // 
+            ImportButton.Location = new Point(756, 139);
+            ImportButton.Name = "ImportButton";
+            ImportButton.Size = new Size(94, 59);
+            ImportButton.TabIndex = 4;
+            ImportButton.Text = "Import Excel Files";
+            ImportButton.UseVisualStyleBackColor = true;
+            // 
+            // ChangeButton
+            // 
+            ChangeButton.Location = new Point(756, 208);
+            ChangeButton.Name = "ChangeButton";
+            ChangeButton.Size = new Size(94, 59);
+            ChangeButton.TabIndex = 4;
+            ChangeButton.Text = "Change Record";
+            ChangeButton.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(756, 345);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(101, 93);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // CalculationsButton
+            // 
+            CalculationsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            CalculationsButton.Location = new Point(703, 13);
+            CalculationsButton.Name = "CalculationsButton";
+            CalculationsButton.Size = new Size(171, 62);
+            CalculationsButton.TabIndex = 7;
+            CalculationsButton.Text = "Calculations  ";
+            CalculationsButton.TextAlign = ContentAlignment.MiddleRight;
+            CalculationsButton.UseVisualStyleBackColor = true;
+            // 
+            // FactorsButton
+            // 
+            FactorsButton.BackColor = Color.FromArgb(224, 224, 224);
+            FactorsButton.FlatStyle = FlatStyle.Popup;
+            FactorsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            FactorsButton.Location = new Point(536, 13);
+            FactorsButton.Name = "FactorsButton";
+            FactorsButton.Size = new Size(146, 62);
+            FactorsButton.TabIndex = 7;
+            FactorsButton.Text = "Factors  ";
+            FactorsButton.TextAlign = ContentAlignment.MiddleRight;
+            FactorsButton.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(192, 0, 0);
+            panel1.Controls.Add(pictureBox3);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(FactorsButton);
+            panel1.Controls.Add(CalculationsButton);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(-17, -1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(887, 114);
+            panel1.TabIndex = 8;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.FromArgb(224, 224, 224);
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(552, 26);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(40, 33);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 9;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.FromArgb(224, 224, 224);
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(720, 26);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(32, 37);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 8;
+            pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(43, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(358, 31);
+            label1.TabIndex = 3;
+            label1.Text = "Calculate Your Carbon Footprint";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(869, 444);
+            Controls.Add(panel1);
+            Controls.Add(pictureBox1);
+            Controls.Add(ImportButton);
+            Controls.Add(ChangeButton);
+            Controls.Add(DeleteButton);
+            Controls.Add(LocationLabel);
+            Controls.Add(ValueLabel);
+            Controls.Add(UnitLabel);
+            Controls.Add(SourceLabel);
             Controls.Add(EmissionsGrid);
-            Controls.Add(DisplayButton);
             Controls.Add(AddButton);
             Controls.Add(LocationText);
             Controls.Add(ValueText);
             Controls.Add(UnitText);
             Controls.Add(SourceText);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "Carbon Footprint Tool";
             ((System.ComponentModel.ISupportInitialize)EmissionsGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -132,7 +301,20 @@
         private TextBox LocationText;
         private Button AddButton;
         private DataGridView EmissionsGrid;
-        private Button DisplayButton;
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
+        private Label SourceLabel;
+        private Label UnitLabel;
+        private Label ValueLabel;
+        private Label LocationLabel;
+        private Button DeleteButton;
+        private Button ImportButton;
+        private Button ChangeButton;
+        private PictureBox pictureBox1;
+        private Button CalculationsButton;
+        private Button FactorsButton;
+        private Panel panel1;
+        private PictureBox pictureBox2;
+        private Label label1;
+        private PictureBox pictureBox3;
     }
 }

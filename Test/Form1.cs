@@ -7,23 +7,35 @@ namespace Test
 {
     public partial class Form1 : Form, IEmissionView
     {
+        //Prezenter - ³¹cznik miêdzy widokiem a modelami
         private readonly IEmissionPresenter _presenter;
+
+        //Eventy
+        public event EventHandler AddButtonClicked;
+        public event EventHandler FormLoaded;
 
         public Form1()
         {
             InitializeComponent();
+            //Tworzê prezenter w konstruktorze -> wywo³uje metodê SetView: przypisuje Eventy do metod z prezentera
             _presenter = new EmissionPresenter(new Database.DBConnector(LoadConnectionString()));
             _presenter.SetView(this);
 
+
             AddButton.Click += (sender, e) => AddButtonClicked?.Invoke(sender, e);
-            DisplayButton.Click += (sender, e) => DisplayButtonClicked?.Invoke(sender, e);
-            
+            Load += (sender, e) => FormLoaded?.Invoke(sender, e);
+
         }
 
+
+
+        //Metoda (chyba nie powinna tu byæ) -> pobieranie ConnectionStringa
         public string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
+
+        //Pobieranie danych z Textboxów z formy
         public string Source
         {
             get => SourceText.Text;
@@ -47,8 +59,7 @@ namespace Test
         }
 
 
-        public event EventHandler AddButtonClicked;
-        public event EventHandler DisplayButtonClicked;
+
 
         public void ShowMessage(string message)
         {
@@ -59,8 +70,6 @@ namespace Test
         {
             EmissionsGrid.DataSource = emissions;
         }
-
-        
     }
 
 
