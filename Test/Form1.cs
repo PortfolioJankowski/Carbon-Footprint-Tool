@@ -1,4 +1,5 @@
 using System.Configuration;
+using Test.Database;
 using Test.Models;
 using Test.Presenters;
 using Test.Views;
@@ -17,8 +18,10 @@ namespace Test
         public Form1()
         {
             InitializeComponent();
+            
+
             //Tworzê prezenter w konstruktorze -> wywo³uje metodê SetView: przypisuje Eventy do metod z prezentera
-            _presenter = new EmissionPresenter(new Database.DBConnector(LoadConnectionString()));
+            _presenter = new EmissionPresenter(new Database.DBConnector());
             _presenter.SetView(this);
 
 
@@ -30,10 +33,7 @@ namespace Test
 
 
         //Metoda (chyba nie powinna tu byæ) -> pobieranie ConnectionStringa
-        public string LoadConnectionString(string id = "Default")
-        {
-            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
-        }
+       
 
         //Pobieranie danych z Textboxów z formy
         public string Source
@@ -69,6 +69,11 @@ namespace Test
         public void DisplayData(List<EmissionModel> emissions)
         {
             EmissionsGrid.DataSource = emissions;
+            EmissionsGrid.ReadOnly = true;
+            EmissionsGrid.BackgroundColor = Color.Beige;
+            EmissionsGrid.ForeColor = Color.Black;
+            EmissionsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
         }
     }
 

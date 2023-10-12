@@ -97,7 +97,9 @@
             // 
             // EmissionsGrid
             // 
+            EmissionsGrid.BackgroundColor = SystemColors.ActiveCaption;
             EmissionsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            EmissionsGrid.GridColor = SystemColors.ActiveCaptionText;
             EmissionsGrid.Location = new Point(181, 139);
             EmissionsGrid.Name = "EmissionsGrid";
             EmissionsGrid.RowHeadersWidth = 51;

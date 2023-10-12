@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
@@ -15,14 +16,18 @@ namespace Test.Database
     {
         private string _connectionString;
 
-        public DBConnector(string connectionString)
+        public DBConnector()
         {
-            _connectionString = connectionString;
+           _connectionString = LoadConnectionString();
         }
 
+        public string LoadConnectionString(string id = "Default")
+        {
+            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+        }
         public void AddRecord(EmissionModel emission)
         {
-            using (IDbConnection cnn = new SqliteConnection(_connectionString))
+            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
             {
                 cnn.Open();
                 using (IDbCommand cmd = cnn.CreateCommand())
