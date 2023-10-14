@@ -18,7 +18,7 @@ namespace Test.Views
         public string Location { get; set; }
         
 
-        public bool isRecordSelected();
+        
 
         event EventHandler AddButtonClicked;
         event EventHandler FormLoaded;

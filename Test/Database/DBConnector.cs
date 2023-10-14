@@ -18,7 +18,7 @@ namespace Test.Database
 
         public DBConnector()
         {
-           _connectionString = LoadConnectionString();
+            _connectionString = LoadConnectionString();
         }
 
         public string LoadConnectionString(string id = "Default")
@@ -61,6 +61,19 @@ namespace Test.Database
             }
         }
 
-        //UPDATE RECORDU Z POZIOMU CHANGEFORMY
+        public void UpdateRecord(int id, string source, string unit, double value, string location)
+        {
+            
+            using (IDbConnection cnn = new SQLiteConnection(_connectionString))
+            {
+                // Ustawiam zapytanie, potem je wykonuje i przekazuje wartości z parametrów metody do parametrów zapytania
+                string query = "UPDATE EmissionsTbl SET Source = @Source, Value = @Value, Location = @Location WHERE Id = @Id";
+                cnn.Execute(query, new { Id = id, Source = source, Value = value, Location = location });
+                MessageBox.Show("Pomyślnie zaktualizowano wiersz");
+
+            }
+
+
+        }
     }
 }

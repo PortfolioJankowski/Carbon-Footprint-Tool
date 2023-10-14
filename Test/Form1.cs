@@ -30,7 +30,7 @@ namespace Test
             AddButton.Click += (sender, e) => AddButtonClicked?.Invoke(sender, e);
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
-           
+
 
         }
 
@@ -80,24 +80,16 @@ namespace Test
             EmissionsGrid.ReadOnly = true;
             EmissionsGrid.BackgroundColor = Color.Beige;
             EmissionsGrid.ForeColor = Color.Black;
-            EmissionsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            EmissionsGrid.Columns["ID"].Width = 40;
+            EmissionsGrid.Columns["Source"].Width = 130;
+            EmissionsGrid.Columns["Unit"].Width = 50;
+            EmissionsGrid.Columns["Value"].Width = 110;
+            EmissionsGrid.Columns["Location"].Width = 150;
+            EmissionsGrid.RowHeadersWidth = 50;
 
         }
 
-        // Manipulacja guziczkiem - zabawa joystickiem
-        public bool isRecordSelected()
-        {
-            if (EmissionsGrid.SelectedRows.Count > 0)
-            {
-                ChangeButton.Enabled = true;
-                return true;
-            }
-            else
-            {
-                ChangeButton.Enabled = false;
-                return false;
-            }
-        }
+  
 
         // Pobieranie danych o recordzie z grida
         public (string Col1, string Col2, string Col3, string Col4, string Col5) GetRecord()
@@ -113,8 +105,8 @@ namespace Test
 
         private void EmissionsGrid_SelectionChanged(object sender, EventArgs e)
         {
-            _ = EmissionsGrid.SelectedRows.Count > 0 ? ChangeButton.Enabled = true : ChangeButton.Enabled = false;
-            
+            _ = EmissionsGrid.SelectedRows.Count == 1 ? ChangeButton.Enabled = true : ChangeButton.Enabled = false;
+
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +20,21 @@ namespace Test.Presenters
         {
             _dbConnector = connector;
             _parent = parentForm;
+            
+        }
+   
+
+        private void ChangeRecordAndCloseForm(object? sender, EventArgs e)
+        {
+            _dbConnector.UpdateRecord(_view.Id, _view.Source, _view.Unit, _view.Value, _view.Location);
+            Console.WriteLine("Dodano");
+            _parent.Activate();
         }
 
         public void SetView(IEmissionChangeView view)
         {
             _view = view;
             _view.SubmitButtonClicked += ChangeRecordAndCloseForm;
-
-        }
-
-        private void ChangeRecordAndCloseForm(object? sender, EventArgs e)
-        {
-            
-            _parent.Activate();
         }
     }
        

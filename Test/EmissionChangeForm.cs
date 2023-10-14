@@ -36,6 +36,8 @@ namespace Test
             ChangeLocationText.Text = LocationFromDB;
             _form = parentForm;
             _presenter = new EmissionChangePresenter(new Database.DBConnector(), _form);
+            _presenter.SetView(this);
+
         }
 
         public string Source
@@ -65,6 +67,12 @@ namespace Test
             set => throw new NotImplementedException();
         }
 
+        public int Id
+        {
+            get => _id;
+            set => throw new NotImplementedException();
+        }
+       
 
         public event EventHandler SubmitButtonClicked;
 
@@ -74,10 +82,10 @@ namespace Test
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
-        {   
+        {
             SubmitButtonClicked?.Invoke(this, EventArgs.Empty);
             this.Close();
-           
+
         }
     }
 

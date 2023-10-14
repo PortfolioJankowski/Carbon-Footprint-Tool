@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             SourceText = new TextBox();
             UnitText = new TextBox();
@@ -87,6 +89,7 @@
             // 
             // AddButton
             // 
+            AddButton.Cursor = Cursors.Hand;
             AddButton.ImageAlign = ContentAlignment.TopRight;
             AddButton.Location = new Point(44, 369);
             AddButton.Name = "AddButton";
@@ -97,15 +100,36 @@
             // 
             // EmissionsGrid
             // 
+            EmissionsGrid.AllowUserToResizeColumns = false;
+            EmissionsGrid.AllowUserToResizeRows = false;
             EmissionsGrid.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gold;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            EmissionsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             EmissionsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            EmissionsGrid.Cursor = Cursors.Hand;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.PeachPuff;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            EmissionsGrid.DefaultCellStyle = dataGridViewCellStyle2;
             EmissionsGrid.GridColor = SystemColors.ActiveCaptionText;
             EmissionsGrid.Location = new Point(181, 110);
             EmissionsGrid.Name = "EmissionsGrid";
-            EmissionsGrid.RowHeadersWidth = 51;
+            EmissionsGrid.RowHeadersWidth = 10;
             EmissionsGrid.RowTemplate.Height = 29;
+            EmissionsGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            EmissionsGrid.ShowCellErrors = false;
             EmissionsGrid.Size = new Size(554, 299);
-            EmissionsGrid.TabIndex = 2;
+            EmissionsGrid.TabIndex = 6;
             EmissionsGrid.SelectionChanged += EmissionsGrid_SelectionChanged;
             // 
             // sqliteCommand1
@@ -157,29 +181,32 @@
             // 
             // DeleteButton
             // 
+            DeleteButton.Cursor = Cursors.Hand;
             DeleteButton.Location = new Point(756, 253);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(94, 59);
-            DeleteButton.TabIndex = 4;
+            DeleteButton.TabIndex = 10;
             DeleteButton.Text = "Delete record";
             DeleteButton.UseVisualStyleBackColor = true;
             // 
             // ImportButton
             // 
+            ImportButton.Cursor = Cursors.Hand;
             ImportButton.Location = new Point(756, 116);
             ImportButton.Name = "ImportButton";
             ImportButton.Size = new Size(94, 59);
-            ImportButton.TabIndex = 4;
+            ImportButton.TabIndex = 8;
             ImportButton.Text = "Import Excel Files";
             ImportButton.UseVisualStyleBackColor = true;
             // 
             // ChangeButton
             // 
+            ChangeButton.Cursor = Cursors.Hand;
             ChangeButton.Enabled = false;
             ChangeButton.Location = new Point(756, 185);
             ChangeButton.Name = "ChangeButton";
             ChangeButton.Size = new Size(94, 59);
-            ChangeButton.TabIndex = 4;
+            ChangeButton.TabIndex = 9;
             ChangeButton.Text = "Change Record";
             ChangeButton.UseVisualStyleBackColor = true;
             // 
@@ -195,6 +222,7 @@
             // 
             // CalculationsButton
             // 
+            CalculationsButton.Cursor = Cursors.Hand;
             CalculationsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             CalculationsButton.Location = new Point(703, 13);
             CalculationsButton.Name = "CalculationsButton";
@@ -207,6 +235,7 @@
             // FactorsButton
             // 
             FactorsButton.BackColor = Color.FromArgb(224, 224, 224);
+            FactorsButton.Cursor = Cursors.Hand;
             FactorsButton.FlatStyle = FlatStyle.Popup;
             FactorsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             FactorsButton.Location = new Point(536, 13);

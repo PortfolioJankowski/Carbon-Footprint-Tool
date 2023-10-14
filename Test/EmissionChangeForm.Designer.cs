@@ -128,6 +128,7 @@
             // 
             // SubmitButton
             // 
+            SubmitButton.Cursor = Cursors.Hand;
             SubmitButton.Location = new Point(109, 232);
             SubmitButton.Name = "SubmitButton";
             SubmitButton.Size = new Size(94, 29);
