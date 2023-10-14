@@ -16,12 +16,14 @@ namespace Test.Views
         public string Unit { get; set; }
         public double Value { get; set; }
         public string Location { get; set; }
+        
 
         public bool isRecordSelected();
 
         event EventHandler AddButtonClicked;
         event EventHandler FormLoaded;
         event EventHandler EmissionChangeFormLoaded;
+        event EventHandler Activated;
 
         (string Col1, string Col2, string Col3, string Col4, string Col5) GetRecord();
 

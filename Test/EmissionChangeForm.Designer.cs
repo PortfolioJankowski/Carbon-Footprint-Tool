@@ -134,6 +134,7 @@
             SubmitButton.TabIndex = 5;
             SubmitButton.Text = "Submit";
             SubmitButton.UseVisualStyleBackColor = true;
+            SubmitButton.Click += SubmitButton_Click;
             // 
             // EmissionChangeForm
             // 

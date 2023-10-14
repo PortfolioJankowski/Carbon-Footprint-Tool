@@ -30,10 +30,9 @@ namespace Test
             AddButton.Click += (sender, e) => AddButtonClicked?.Invoke(sender, e);
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
+           
 
         }
-
-
 
 
         //Pobieranie danych z Textboxów z formy

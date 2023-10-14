@@ -27,6 +27,8 @@ namespace Test.Presenters
             _view.AddButtonClicked += GetAll;
             _view.FormLoaded += GetAll;
             _view.EmissionChangeFormLoaded += ChangeEmission;
+            _view.Activated += GetAll;
+            
             
         }
 
@@ -39,8 +41,12 @@ namespace Test.Presenters
                 var selectedRecordTuple = _view.GetRecord();
 
                 // Biorę z tupla pojedyncze itemy i wrzucam je do konstruktora, który przypisze je do odpowiednich pól
-                EmissionChangeForm emissionChangeForm = new EmissionChangeForm(selectedRecordTuple.Col2, selectedRecordTuple.Col3, selectedRecordTuple.Col4, selectedRecordTuple.Col5, selectedRecordTuple.Col1);
+                // Przekazuje dodatkowo formę 1, żeby z móc później wywołać na niej load przed zamknięciem formy Change
+                EmissionChangeForm emissionChangeForm = new EmissionChangeForm(selectedRecordTuple.Col2, selectedRecordTuple.Col3, selectedRecordTuple.Col4, selectedRecordTuple.Col5, selectedRecordTuple.Col1, new Form1());
+            
                 emissionChangeForm.Show();
+        
+                
 
         }
 

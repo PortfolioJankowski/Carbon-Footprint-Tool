@@ -13,6 +13,7 @@ namespace Test.Views
         string Unit { get; set; }   
         double Value { get; set; }
         string Location { get; set; }
+       
 
         event EventHandler SubmitButtonClicked;
     }
