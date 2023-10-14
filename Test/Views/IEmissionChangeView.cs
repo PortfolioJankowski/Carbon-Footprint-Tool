@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Test.Views
+﻿namespace Test.Views
 {
     public interface IEmissionChangeView
     {
-
         int Id { get; set; }
         string Source { get; set; }
         string Unit { get; set; }   
         double Value { get; set; }
-        string Location { get; set; }
-       
+        string EmissionLocation { get; set; }
 
         event EventHandler SubmitButtonClicked;
+        void Close();
+
     }
 }

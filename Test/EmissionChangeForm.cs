@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Common;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Test.Database;
+﻿using Test.Database;
+using Test.Models;
 using Test.Presenters;
 using Test.Views;
 
@@ -18,26 +9,26 @@ namespace Test
     {
         //Deklaruje sobie zmienną, do której przesyłam ID zaznaczonego rekordu
         private int _id;
-        private string _temporaryId;
-        private Form1 _form;
+        private EmissionForm _form;
         private EmissionChangePresenter _presenter;
-        private DBConnector _dbConnector;
+        private EmissionsRepository _dbConnector;
 
-        public EmissionChangeForm(string SourceFromDB, string UnitFromDB, string ValueFromDB, string LocationFromDB, string IdFromDB, Form1 parentForm)
+        public EmissionChangeForm(EmissionModel model, EmissionForm parentForm)
         {
             InitializeComponent();
 
             // Przypisuje wartości z grida do textboxów
-            _temporaryId = IdFromDB;
-            _id = int.Parse(_temporaryId);
-            ChangeSourceText.Text = SourceFromDB;
-            ChangeUnitText.Text = UnitFromDB;
-            ChangeValueText.Text = ValueFromDB;
-            ChangeLocationText.Text = LocationFromDB;
+            _id = model.ID;
+            Source = model.Source;
+            Unit = model.Unit;
+            Value = model.Value;
+            EmissionLocation = model.Location;
+
             _form = parentForm;
-            _presenter = new EmissionChangePresenter(new Database.DBConnector(), _form);
+            _presenter = new EmissionChangePresenter(new Database.EmissionsRepository(), _form);
             _presenter.SetView(this);
 
+            SubmitButton.Click += (sender, e) => SubmitButtonClicked?.Invoke(sender, e);
         }
 
         public string Source
@@ -56,7 +47,7 @@ namespace Test
             get => double.Parse(ChangeValueText.Text);
             set => ChangeValueText.Text = value.ToString();
         }
-        public string Location
+        public string EmissionLocation
         {
             get => ChangeLocationText.Text;
             set => ChangeLocationText.Text = value;
@@ -80,14 +71,5 @@ namespace Test
         {
             throw new NotImplementedException();
         }
-
-        private void SubmitButton_Click(object sender, EventArgs e)
-        {
-            SubmitButtonClicked?.Invoke(this, EventArgs.Empty);
-            this.Close();
-
-        }
     }
-
-
 }

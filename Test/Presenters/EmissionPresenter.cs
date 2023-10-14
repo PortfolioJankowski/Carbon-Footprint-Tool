@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Test.Database;
+﻿using Test.Database;
 using Test.Models;
 using Test.Views;
 
@@ -13,9 +7,9 @@ namespace Test.Presenters
     public class EmissionPresenter : IEmissionPresenter
     {
         private  IEmissionView _view;
-        private readonly DBConnector _dbConnector;
+        private readonly EmissionsRepository _dbConnector;
 
-        public EmissionPresenter(DBConnector dBConnector)
+        public EmissionPresenter(EmissionsRepository dBConnector)
         {
             _dbConnector = dBConnector;
         }
@@ -28,35 +22,26 @@ namespace Test.Presenters
             _view.FormLoaded += GetAll;
             _view.EmissionChangeFormLoaded += ChangeEmission;
             _view.Activated += GetAll;
-            _view.DeleteButtonClicked += DeleteRecord;
-            
-            
+            _view.DeleteButtonClicked += DeleteRecord;      
         }
 
         private void DeleteRecord(object? sender, EventArgs e)
         {
-            var selectedRecordTuple = _view.GetRecord();
-            int recordId = int.Parse(selectedRecordTuple.Col1);
-            _dbConnector.DeleteRecord(recordId);
-          
+            var record = _view.CurrentRecord;
+            _dbConnector.DeleteRecord(record.ID);
         }
-
-
 
         // Uruchomienie formy zmieniającej emisje
         private void ChangeEmission(object? sender, EventArgs e)
         {      
                 // Przypisuje do zmiennej Tupla z zaznaczonym recordem
-                var selectedRecordTuple = _view.GetRecord();
+                var record = _view.CurrentRecord;
 
                 // Biorę z tupla pojedyncze itemy i wrzucam je do konstruktora, który przypisze je do odpowiednich pól
                 // Przekazuje dodatkowo formę 1, żeby z móc później wywołać na niej load przed zamknięciem formy Change
-                EmissionChangeForm emissionChangeForm = new EmissionChangeForm(selectedRecordTuple.Col2, selectedRecordTuple.Col3, selectedRecordTuple.Col4, selectedRecordTuple.Col5, selectedRecordTuple.Col1, new Form1());
+                EmissionChangeForm emissionChangeForm = new EmissionChangeForm(record, new EmissionForm());
             
                 emissionChangeForm.Show();
-        
-                
-
         }
 
         // Kliknięcie przycisku GetAll

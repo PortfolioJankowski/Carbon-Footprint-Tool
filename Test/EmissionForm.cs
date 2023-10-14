@@ -1,14 +1,11 @@
-using System.Configuration;
 using System.Diagnostics;
-using System.Windows.Forms;
-using Test.Database;
 using Test.Models;
 using Test.Presenters;
 using Test.Views;
 
 namespace Test
 {
-    public partial class Form1 : Form, IEmissionView
+    public partial class EmissionForm : Form, IEmissionView
     {
         //Prezenter - ³¹cznik miêdzy widokiem a modelami
         private readonly IEmissionPresenter _presenter;
@@ -19,22 +16,28 @@ namespace Test
         public event EventHandler EmissionChangeFormLoaded;
         public event EventHandler DeleteButtonClicked;
 
-        public Form1()
+        public EmissionForm()
         {
             InitializeComponent();
 
-
             //Tworzê prezenter w konstruktorze -> wywo³uje metodê SetView: przypisuje Eventy do metod z prezentera
-            _presenter = new EmissionPresenter(new Database.DBConnector());
+            _presenter = new EmissionPresenter(new Database.EmissionsRepository());
             _presenter.SetView(this);
 
-
             AddButton.Click += (sender, e) => AddButtonClicked?.Invoke(sender, e);
+            DeleteButton.Click += (sender, e) => DeleteButtonClicked?.Invoke(sender, e);
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
-            
 
-
+            //EmissionsGrid.ReadOnly = true;
+            //EmissionsGrid.BackgroundColor = Color.Beige;
+            //EmissionsGrid.ForeColor = Color.Black;
+            //EmissionsGrid.Columns["Id"].Visible = false;
+            //EmissionsGrid.Columns["Source"].Width = 180;
+            //EmissionsGrid.Columns["Unit"].Width = 50;
+            //EmissionsGrid.Columns["Value"].Width = 130;
+            //EmissionsGrid.Columns["Location"].Width = 170;
+            //EmissionsGrid.RowHeadersWidth = 50;
         }
 
 
@@ -60,7 +63,10 @@ namespace Test
             get => LocationText.Text;
             set => LocationText.Text = value;
         }
-
+        public EmissionModel CurrentRecord
+        {
+            get => emissionModelBindingSource.Current as EmissionModel;
+        }
 
 
         // Wyœwietlanie Komunikatów o dodawaniu do grida na pierwszej formie
@@ -79,38 +85,16 @@ namespace Test
             LocationText.Text = "";
 
             //Ustawienia grida
-            EmissionsGrid.DataSource = emissions;
-            EmissionsGrid.ReadOnly = true;
-            EmissionsGrid.BackgroundColor = Color.Beige;
-            EmissionsGrid.ForeColor = Color.Black;
-            EmissionsGrid.Columns["Id"].Visible = false;
-            EmissionsGrid.Columns["Source"].Width = 180;
-            EmissionsGrid.Columns["Unit"].Width = 50;
-            EmissionsGrid.Columns["Value"].Width = 130;
-            EmissionsGrid.Columns["Location"].Width = 170;
-            EmissionsGrid.RowHeadersWidth = 50;
-
-        }
-
-
-
-        // Pobieranie danych o recordzie z grida
-        public (string Col1, string Col2, string Col3, string Col4, string Col5) GetRecord()
-        {
-            string col1 = EmissionsGrid.SelectedRows[0].Cells["ID"].Value.ToString();
-            string col2 = EmissionsGrid.SelectedRows[0].Cells["Source"].Value.ToString();
-            string col3 = EmissionsGrid.SelectedRows[0].Cells["Unit"].Value.ToString();
-            string col4 = EmissionsGrid.SelectedRows[0].Cells["Value"].Value.ToString();
-            string col5 = EmissionsGrid.SelectedRows[0].Cells["Location"].Value.ToString();
-
-            return (col1, col2, col3, col4, col5);
+            //EmissionsGrid.DataSource = emissions;
+            emissionModelBindingSource.DataSource = emissions;
         }
 
         private void EmissionsGrid_SelectionChanged(object sender, EventArgs e)
         {
-            _ = EmissionsGrid.SelectedRows.Count == 1 ? ChangeButton.Enabled = true : ChangeButton.Enabled = false;
-            _ = EmissionsGrid.SelectedRows.Count == 1 ? DeleteButton.Enabled = true : DeleteButton.Enabled = false;
+            var isSelected = emissionModelBindingSource.Current != null;
 
+            ChangeButton.Enabled = isSelected;
+            DeleteButton.Enabled = isSelected;
         }
 
         private void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)

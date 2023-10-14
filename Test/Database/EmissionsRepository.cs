@@ -1,24 +1,21 @@
 ﻿using Dapper;
 using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Test.Models;
 
 namespace Test.Database
 {
-    public class DBConnector
+    public class EmissionsRepository
     {
         private string _connectionString;
+        private string _tableName;
 
-        public DBConnector()
+        public EmissionsRepository()
         {
             _connectionString = LoadConnectionString();
+            _tableName = "EmissionsTbl";
         }
 
         public string LoadConnectionString(string id = "Default")
@@ -34,7 +31,7 @@ namespace Test.Database
                 cnn.Open();
                 using (IDbCommand cmd = cnn.CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO EmissionsTbl (Source, Unit, Value, Location) VALUES (@Source, @Unit, @Value, @Location)";
+                    cmd.CommandText = $"INSERT INTO {_tableName} (Source, Unit, Value, Location) VALUES (@Source, @Unit, @Value, @Location)";
                     cmd.Parameters.Add(new SqliteParameter("@Source", emission.Source));
                     cmd.Parameters.Add(new SqliteParameter("@Unit", emission.Unit));
                     cmd.Parameters.Add(new SqliteParameter("@Value", emission.Value));
@@ -47,43 +44,28 @@ namespace Test.Database
         // Pobieranie danych o emisjach żeby dodać je do grida na pierwszej formie
         public List<EmissionModel> GetAllEmissions()
         {
-            List<EmissionModel> emissions = new List<EmissionModel>();
             using (IDbConnection cnn = new SQLiteConnection(_connectionString))
             {
-                var EmissionsFromDb = cnn.Query<EmissionModel>("Select Id AS ID, Source, Unit, Value, Location from EmissionsTbl").ToList();
-
-                foreach (var emission in EmissionsFromDb)
-                {
-                    emission.Value = Convert.ToDouble(emission.Value);
-                }
-
-                return EmissionsFromDb;
+                return cnn.Query<EmissionModel>($"Select Id AS ID, Source, Unit, Value, Location from {_tableName}").ToList();
             }
         }
 
         public void UpdateRecord(int id, string source, string unit, double value, string location)
         {
-
             using (IDbConnection cnn = new SQLiteConnection(_connectionString))
             {
                 // Ustawiam zapytanie, potem je wykonuje i przekazuje wartości z parametrów metody do parametrów zapytania
-                string query = "UPDATE EmissionsTbl SET Source = @Source, Unit = @Unit, Value = @Value, Location = @Location WHERE Id = @Id";
+                string query = $"UPDATE {_tableName} SET Source = @Source, Unit = @Unit, Value = @Value, Location = @Location WHERE Id = @Id";
                 cnn.Execute(query, new { Id = id, Source = source, Unit = unit, Value = value, Location = location });
-                MessageBox.Show("Pomyślnie zaktualizowano wiersz");
-
             }
-
-
         }
 
-        internal void DeleteRecord(int id)
+        public void DeleteRecord(int id)
         {
             using (IDbConnection cnn = new SQLiteConnection(_connectionString))
             {
-                string query = "Delete From EmissionsTbl where Id = @Id";
+                string query = $"Delete From {_tableName} where Id = @Id";
                 cnn.Execute(query, new { Id = id });
-                MessageBox.Show("Wiersz został usunięty");
-
             }
         }
     }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Test.Models;
+﻿using Test.Models;
 
 namespace Test.Views
 {
@@ -16,17 +11,13 @@ namespace Test.Views
         public string Unit { get; set; }
         public double Value { get; set; }
         public string Location { get; set; }
+        public EmissionModel CurrentRecord { get; }
         
-
-        
-
         event EventHandler AddButtonClicked;
         event EventHandler FormLoaded;
         event EventHandler EmissionChangeFormLoaded;
         event EventHandler Activated;
         event EventHandler DeleteButtonClicked;
-
-        (string Col1, string Col2, string Col3, string Col4, string Col5) GetRecord();
 
         void DisplayData(List<EmissionModel> emissions);
 

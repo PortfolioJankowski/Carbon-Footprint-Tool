@@ -1,10 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Test.Database;
+﻿using Test.Database;
 using Test.Views;
 
 namespace Test.Presenters
@@ -12,22 +6,21 @@ namespace Test.Presenters
     public class EmissionChangePresenter : IEmissionChangePresenter
     {
         private IEmissionChangeView _view;
-        private readonly DBConnector _dbConnector;
-        private Form1 _parent;
-       
+        private readonly EmissionsRepository _dbConnector;
+        private EmissionForm _parent;
 
-        public EmissionChangePresenter(DBConnector connector, Form1 parentForm)
+        public EmissionChangePresenter(EmissionsRepository connector, EmissionForm parentForm)
         {
             _dbConnector = connector;
-            _parent = parentForm;
-            
+            _parent = parentForm;     
         }
    
 
         private void ChangeRecordAndCloseForm(object? sender, EventArgs e)
         {
-            _dbConnector.UpdateRecord(_view.Id, _view.Source, _view.Unit, _view.Value, _view.Location);
+            _dbConnector.UpdateRecord(_view.Id, _view.Source, _view.Unit, _view.Value, _view.EmissionLocation);
             Console.WriteLine("Dodano");
+            _view.Close();
             _parent.Activate();
         }
 
