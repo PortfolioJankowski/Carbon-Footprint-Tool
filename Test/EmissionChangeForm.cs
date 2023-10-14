@@ -72,7 +72,7 @@ namespace Test
             get => _id;
             set => throw new NotImplementedException();
         }
-       
+
 
         public event EventHandler SubmitButtonClicked;
 

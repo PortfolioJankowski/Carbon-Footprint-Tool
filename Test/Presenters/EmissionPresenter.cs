@@ -28,8 +28,17 @@ namespace Test.Presenters
             _view.FormLoaded += GetAll;
             _view.EmissionChangeFormLoaded += ChangeEmission;
             _view.Activated += GetAll;
+            _view.DeleteButtonClicked += DeleteRecord;
             
             
+        }
+
+        private void DeleteRecord(object? sender, EventArgs e)
+        {
+            var selectedRecordTuple = _view.GetRecord();
+            int recordId = int.Parse(selectedRecordTuple.Col1);
+            _dbConnector.DeleteRecord(recordId);
+          
         }
 
 

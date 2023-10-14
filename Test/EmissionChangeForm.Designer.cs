@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmissionChangeForm));
             panel1 = new Panel();
+            pictureBox4 = new PictureBox();
             label1 = new Label();
-            ChangeSourceText = new TextBox();
-            ChangeUnitText = new TextBox();
             ChangeValueText = new TextBox();
             ChangeLocationText = new TextBox();
             label2 = new Label();
@@ -39,42 +39,42 @@
             label4 = new Label();
             label5 = new Label();
             SubmitButton = new Button();
+            ChangeSourceText = new ComboBox();
+            ChangeUnitText = new ComboBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(192, 0, 0);
+            panel1.BackColor = Color.DarkOliveGreen;
+            panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(-22, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(440, 64);
+            panel1.Size = new Size(358, 64);
             panel1.TabIndex = 0;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(31, 9);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(56, 52);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 8;
+            pictureBox4.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(34, 19);
+            label1.Location = new Point(93, 20);
             label1.Name = "label1";
             label1.Size = new Size(230, 25);
             label1.TabIndex = 0;
             label1.Text = "Change selected Emission";
-            // 
-            // ChangeSourceText
-            // 
-            ChangeSourceText.Location = new Point(132, 81);
-            ChangeSourceText.Name = "ChangeSourceText";
-            ChangeSourceText.Size = new Size(143, 27);
-            ChangeSourceText.TabIndex = 1;
-            // 
-            // ChangeUnitText
-            // 
-            ChangeUnitText.Location = new Point(132, 114);
-            ChangeUnitText.Name = "ChangeUnitText";
-            ChangeUnitText.Size = new Size(143, 27);
-            ChangeUnitText.TabIndex = 2;
             // 
             // ChangeValueText
             // 
@@ -137,11 +137,31 @@
             SubmitButton.UseVisualStyleBackColor = true;
             SubmitButton.Click += SubmitButton_Click;
             // 
+            // ChangeSourceText
+            // 
+            ChangeSourceText.FormattingEnabled = true;
+            ChangeSourceText.Items.AddRange(new object[] { "Petrol", "Diesel oil", "CNG", "LPG", "Purchased heat", "Purchased electricity", "Biogas", "Biopetrol" });
+            ChangeSourceText.Location = new Point(132, 80);
+            ChangeSourceText.Name = "ChangeSourceText";
+            ChangeSourceText.Size = new Size(143, 28);
+            ChangeSourceText.TabIndex = 6;
+            // 
+            // ChangeUnitText
+            // 
+            ChangeUnitText.FormattingEnabled = true;
+            ChangeUnitText.Items.AddRange(new object[] { "kWh", "GJ", "m3", "l", "t" });
+            ChangeUnitText.Location = new Point(132, 113);
+            ChangeUnitText.Name = "ChangeUnitText";
+            ChangeUnitText.Size = new Size(143, 28);
+            ChangeUnitText.TabIndex = 7;
+            // 
             // EmissionChangeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(309, 285);
+            Controls.Add(ChangeUnitText);
+            Controls.Add(ChangeSourceText);
             Controls.Add(SubmitButton);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -149,14 +169,13 @@
             Controls.Add(label2);
             Controls.Add(ChangeLocationText);
             Controls.Add(ChangeValueText);
-            Controls.Add(ChangeUnitText);
-            Controls.Add(ChangeSourceText);
             Controls.Add(panel1);
             Name = "EmissionChangeForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EmissionChangeForm";
+            Text = "Change";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,8 +184,6 @@
 
         private Panel panel1;
         private Label label1;
-        private TextBox ChangeSourceText;
-        private TextBox ChangeUnitText;
         private TextBox ChangeValueText;
         private TextBox ChangeLocationText;
         private Label label2;
@@ -174,5 +191,8 @@
         private Label label4;
         private Label label5;
         private Button SubmitButton;
+        private ComboBox ChangeSourceText;
+        private ComboBox ChangeUnitText;
+        private PictureBox pictureBox4;
     }
 }

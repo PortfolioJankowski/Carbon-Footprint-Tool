@@ -1,4 +1,5 @@
 using System.Configuration;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Test.Database;
 using Test.Models;
@@ -16,6 +17,7 @@ namespace Test
         public event EventHandler AddButtonClicked;
         public event EventHandler FormLoaded;
         public event EventHandler EmissionChangeFormLoaded;
+        public event EventHandler DeleteButtonClicked;
 
         public Form1()
         {
@@ -30,6 +32,7 @@ namespace Test
             AddButton.Click += (sender, e) => AddButtonClicked?.Invoke(sender, e);
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
+            
 
 
         }
@@ -80,16 +83,16 @@ namespace Test
             EmissionsGrid.ReadOnly = true;
             EmissionsGrid.BackgroundColor = Color.Beige;
             EmissionsGrid.ForeColor = Color.Black;
-            EmissionsGrid.Columns["ID"].Width = 40;
-            EmissionsGrid.Columns["Source"].Width = 130;
+            EmissionsGrid.Columns["Id"].Visible = false;
+            EmissionsGrid.Columns["Source"].Width = 180;
             EmissionsGrid.Columns["Unit"].Width = 50;
-            EmissionsGrid.Columns["Value"].Width = 110;
-            EmissionsGrid.Columns["Location"].Width = 150;
+            EmissionsGrid.Columns["Value"].Width = 130;
+            EmissionsGrid.Columns["Location"].Width = 170;
             EmissionsGrid.RowHeadersWidth = 50;
 
         }
 
-  
+
 
         // Pobieranie danych o recordzie z grida
         public (string Col1, string Col2, string Col3, string Col4, string Col5) GetRecord()
@@ -106,7 +109,36 @@ namespace Test
         private void EmissionsGrid_SelectionChanged(object sender, EventArgs e)
         {
             _ = EmissionsGrid.SelectedRows.Count == 1 ? ChangeButton.Enabled = true : ChangeButton.Enabled = false;
+            _ = EmissionsGrid.SelectedRows.Count == 1 ? DeleteButton.Enabled = true : DeleteButton.Enabled = false;
 
+        }
+
+        private void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Super ch³op");
+        }
+
+        private void methodologyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string url = "https://ghgprotocol.org/corporate-standard";
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Wyst¹pi³ b³¹d: " + ex.Message);
+            }
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            DeleteButtonClicked?.Invoke(sender, e);
+            this.Activate();
         }
     }
 

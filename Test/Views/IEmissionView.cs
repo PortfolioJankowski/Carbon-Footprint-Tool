@@ -24,6 +24,7 @@ namespace Test.Views
         event EventHandler FormLoaded;
         event EventHandler EmissionChangeFormLoaded;
         event EventHandler Activated;
+        event EventHandler DeleteButtonClicked;
 
         (string Col1, string Col2, string Col3, string Col4, string Col5) GetRecord();
 
