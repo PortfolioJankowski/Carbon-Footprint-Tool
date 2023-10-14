@@ -1,5 +1,4 @@
-﻿using Test.Database;
-using Test.Models;
+﻿using Test.Models;
 using Test.Presenters;
 using Test.Views;
 
@@ -11,9 +10,8 @@ namespace Test
         private int _id;
         private EmissionForm _form;
         private EmissionChangePresenter _presenter;
-        private EmissionsRepository _dbConnector;
 
-        public EmissionChangeForm(EmissionModel model, EmissionForm parentForm)
+        public EmissionChangeForm(EmissionModel model)
         {
             InitializeComponent();
 
@@ -24,8 +22,7 @@ namespace Test
             Value = model.Value;
             EmissionLocation = model.Location;
 
-            _form = parentForm;
-            _presenter = new EmissionChangePresenter(new Database.EmissionsRepository(), _form);
+            _presenter = new EmissionChangePresenter(new Database.EmissionsRepository());
             _presenter.SetView(this);
 
             SubmitButton.Click += (sender, e) => SubmitButtonClicked?.Invoke(sender, e);
@@ -52,11 +49,6 @@ namespace Test
             get => ChangeLocationText.Text;
             set => ChangeLocationText.Text = value;
         }
-        public Form parentForm
-        {
-            get => _form;
-            set => throw new NotImplementedException();
-        }
 
         public int Id
         {
@@ -66,10 +58,5 @@ namespace Test
 
 
         public event EventHandler SubmitButtonClicked;
-
-        public void CloseParentForm()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

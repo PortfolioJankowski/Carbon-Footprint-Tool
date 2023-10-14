@@ -235,7 +235,6 @@
             DeleteButton.TabIndex = 10;
             DeleteButton.Text = "Delete record";
             DeleteButton.UseVisualStyleBackColor = true;
-            DeleteButton.Click += DeleteButton_Click;
             // 
             // ImportButton
             // 

@@ -6,7 +6,7 @@ namespace Test.Presenters
 {
     public class EmissionPresenter : IEmissionPresenter
     {
-        private  IEmissionView _view;
+        private IEmissionView _view;
         private readonly EmissionsRepository _dbConnector;
 
         public EmissionPresenter(EmissionsRepository dBConnector)
@@ -18,50 +18,41 @@ namespace Test.Presenters
         {
             _view = view;
             _view.AddButtonClicked += AddRecord;
-            _view.AddButtonClicked += GetAll;
-            _view.FormLoaded += GetAll;
+            _view.FormLoaded += GetAllRecords;
             _view.EmissionChangeFormLoaded += ChangeEmission;
-            _view.Activated += GetAll;
-            _view.DeleteButtonClicked += DeleteRecord;      
+            _view.DeleteButtonClicked += DeleteRecord;
         }
 
         private void DeleteRecord(object? sender, EventArgs e)
         {
             var record = _view.CurrentRecord;
             _dbConnector.DeleteRecord(record.ID);
+            GetAllRecords(sender, e);
         }
 
         // Uruchomienie formy zmieniającej emisje
         private void ChangeEmission(object? sender, EventArgs e)
-        {      
-                // Przypisuje do zmiennej Tupla z zaznaczonym recordem
-                var record = _view.CurrentRecord;
+        {
+            // Biorę z tupla pojedyncze itemy i wrzucam je do konstruktora, który przypisze je do odpowiednich pól
+            // Przekazuje dodatkowo formę 1, żeby z móc później wywołać na niej load przed zamknięciem formy Change
+            EmissionChangeForm emissionChangeForm = new EmissionChangeForm(_view.CurrentRecord);
 
-                // Biorę z tupla pojedyncze itemy i wrzucam je do konstruktora, który przypisze je do odpowiednich pól
-                // Przekazuje dodatkowo formę 1, żeby z móc później wywołać na niej load przed zamknięciem formy Change
-                EmissionChangeForm emissionChangeForm = new EmissionChangeForm(record, new EmissionForm());
-            
-                emissionChangeForm.Show();
+            var result = emissionChangeForm.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                GetAllRecords(sender, e);
+            }
         }
 
         // Kliknięcie przycisku GetAll
-        private void GetAll(object? sender, EventArgs e)
+        private void GetAllRecords(object? sender, EventArgs e)
         {
-            try
-            {   //listę emisji z bazy muszę gdzieś zapisać -> tworze listę, interakcja z Widokiem
-                List<EmissionModel> emissions = _dbConnector.GetAllEmissions();
+            //listę emisji z bazy muszę gdzieś zapisać -> tworze listę, interakcja z Widokiem
+            List<EmissionModel> emissions = _dbConnector.GetAllEmissions();
 
-                // Metoda DisplayData po swoim wykonaniu czyści również formę
-                _view.DisplayData(emissions);
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Błąd konwersji " + ex.Message);
-            }
-            catch (InvalidCastException ex)
-            {
-                MessageBox.Show("Błąd rzutowania " + ex.Message);
-            }
+            // Metoda DisplayData po swoim wykonaniu czyści również formę
+            _view.DisplayData(emissions);
         }
 
         private void AddRecord(object? sender, EventArgs e)
@@ -80,6 +71,7 @@ namespace Test.Presenters
 
                 // Wyświetl komunikat o sukcesie
                 _view.ShowMessage("Rekord został dodany pomyślnie.");
+                GetAllRecords(sender, e);
             }
             catch (Exception ex)
             {

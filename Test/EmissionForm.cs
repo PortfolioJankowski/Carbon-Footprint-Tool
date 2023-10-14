@@ -28,18 +28,7 @@ namespace Test
             DeleteButton.Click += (sender, e) => DeleteButtonClicked?.Invoke(sender, e);
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
-
-            //EmissionsGrid.ReadOnly = true;
-            //EmissionsGrid.BackgroundColor = Color.Beige;
-            //EmissionsGrid.ForeColor = Color.Black;
-            //EmissionsGrid.Columns["Id"].Visible = false;
-            //EmissionsGrid.Columns["Source"].Width = 180;
-            //EmissionsGrid.Columns["Unit"].Width = 50;
-            //EmissionsGrid.Columns["Value"].Width = 130;
-            //EmissionsGrid.Columns["Location"].Width = 170;
-            //EmissionsGrid.RowHeadersWidth = 50;
         }
-
 
         //Pobieranie danych z Textboxów z formy
         public string Source
@@ -118,13 +107,5 @@ namespace Test
                 Console.WriteLine("Wyst¹pi³ b³¹d: " + ex.Message);
             }
         }
-
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            DeleteButtonClicked?.Invoke(sender, e);
-            this.Activate();
-        }
     }
-
-
 }
