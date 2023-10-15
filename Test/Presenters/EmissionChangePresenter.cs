@@ -1,4 +1,6 @@
-﻿using Test.Database;
+﻿using System.ComponentModel.DataAnnotations;
+using Test.Database;
+using Test.Models;
 using Test.Views;
 
 namespace Test.Presenters
@@ -15,9 +17,25 @@ namespace Test.Presenters
 
         private void ChangeRecordAndCloseForm(object? sender, EventArgs e)
         {
-            _dbConnector.UpdateRecord(_view.Id, _view.Source, _view.Unit, _view.Value, _view.EmissionLocation);
-            Console.WriteLine("Dodano");
-            _view.Close();
+              try
+            { EmissionModel emission = new EmissionModel();
+
+                emission.Value = _view.Value;
+                _dbConnector.UpdateRecord(_view.Id, _view.Source, _view.Unit, _view.Value, _view.EmissionLocation);
+                _view.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Value field must be numeric", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+                    
+
+               
+            
         }
 
         public void SetView(IEmissionChangeView view)

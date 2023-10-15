@@ -37,6 +37,8 @@ namespace Test.Presenters
             // Przekazuje dodatkowo formę 1, żeby z móc później wywołać na niej load przed zamknięciem formy Change
             EmissionChangeForm emissionChangeForm = new EmissionChangeForm(_view.CurrentRecord);
 
+
+            // Ustawiam EmissionChangeForm -> DialogResult na ok. Jak zamknę to result będzie zawierał DialogResultOk
             var result = emissionChangeForm.ShowDialog();
 
             if(result == DialogResult.OK)
@@ -56,28 +58,34 @@ namespace Test.Presenters
         }
 
         private void AddRecord(object? sender, EventArgs e)
-        {
-            try
-            {
+        {         
                 // Do zadeklarowanych danych pobieram wartości z bazy
                 string source = _view.Source;
                 string unit = _view.Unit;
-                double value = _view.Value;
                 string location = _view.Location;
 
+            try
+            {
+                double value = _view.Value;
                 // Tworzę obiekt i wrzucam go do metody dodającej record
                 EmissionModel emission = new EmissionModel { Source = source, Unit = unit, Value = value, Location = location };
                 _dbConnector.AddRecord(emission);
 
                 // Wyświetl komunikat o sukcesie
-                _view.ShowMessage("Rekord został dodany pomyślnie.");
+                _view.ShowMessage("Succesfully added.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 GetAllRecords(sender, e);
             }
             catch (Exception ex)
             {
-                // Obsłuż błąd i wyświetl komunikat
-                _view.ShowMessage("Wystąpił błąd podczas dodawania rekordu: " + ex.Message);
+                MessageBox.Show("Value field is numeric", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+                
+                
+
+                
+
+                
+           
         }
     }
 }

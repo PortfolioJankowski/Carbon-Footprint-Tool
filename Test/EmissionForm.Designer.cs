@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmissionForm));
             ValueText = new TextBox();
             LocationText = new TextBox();
@@ -73,28 +73,25 @@
             // 
             // ValueText
             // 
-            ValueText.Location = new Point(19, 196);
-            ValueText.Margin = new Padding(3, 2, 3, 2);
+            ValueText.Location = new Point(22, 261);
             ValueText.Name = "ValueText";
-            ValueText.Size = new Size(110, 23);
+            ValueText.Size = new Size(125, 27);
             ValueText.TabIndex = 3;
             // 
             // LocationText
             // 
-            LocationText.Location = new Point(19, 238);
-            LocationText.Margin = new Padding(3, 2, 3, 2);
+            LocationText.Location = new Point(22, 317);
             LocationText.Name = "LocationText";
-            LocationText.Size = new Size(110, 23);
+            LocationText.Size = new Size(125, 27);
             LocationText.TabIndex = 4;
             // 
             // AddButton
             // 
             AddButton.Cursor = Cursors.Hand;
             AddButton.ImageAlign = ContentAlignment.TopRight;
-            AddButton.Location = new Point(35, 271);
-            AddButton.Margin = new Padding(3, 2, 3, 2);
+            AddButton.Location = new Point(40, 361);
             AddButton.Name = "AddButton";
-            AddButton.Size = new Size(82, 22);
+            AddButton.Size = new Size(94, 29);
             AddButton.TabIndex = 5;
             AddButton.Text = "Add";
             AddButton.UseVisualStyleBackColor = true;
@@ -108,31 +105,30 @@
             EmissionsGrid.AutoGenerateColumns = false;
             EmissionsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             EmissionsGrid.BackgroundColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gold;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            EmissionsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Gold;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            EmissionsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             EmissionsGrid.ColumnHeadersHeight = 29;
             EmissionsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             EmissionsGrid.Columns.AddRange(new DataGridViewColumn[] { sourceDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn, valueDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
             EmissionsGrid.Cursor = Cursors.Hand;
             EmissionsGrid.DataSource = emissionModelBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.PeachPuff;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            EmissionsGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.PeachPuff;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            EmissionsGrid.DefaultCellStyle = dataGridViewCellStyle4;
             EmissionsGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
             EmissionsGrid.GridColor = SystemColors.ActiveCaptionText;
-            EmissionsGrid.Location = new Point(145, 81);
-            EmissionsGrid.Margin = new Padding(3, 2, 3, 2);
+            EmissionsGrid.Location = new Point(166, 108);
             EmissionsGrid.MultiSelect = false;
             EmissionsGrid.Name = "EmissionsGrid";
             EmissionsGrid.ReadOnly = true;
@@ -141,7 +137,7 @@
             EmissionsGrid.RowTemplate.Height = 29;
             EmissionsGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             EmissionsGrid.ShowCellErrors = false;
-            EmissionsGrid.Size = new Size(511, 224);
+            EmissionsGrid.Size = new Size(584, 299);
             EmissionsGrid.TabIndex = 6;
             EmissionsGrid.SelectionChanged += EmissionsGrid_SelectionChanged;
             // 
@@ -149,6 +145,7 @@
             // 
             sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
             sourceDataGridViewTextBoxColumn.HeaderText = "Source";
+            sourceDataGridViewTextBoxColumn.MinimumWidth = 6;
             sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
             sourceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -156,6 +153,7 @@
             // 
             unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
             unitDataGridViewTextBoxColumn.HeaderText = "Unit";
+            unitDataGridViewTextBoxColumn.MinimumWidth = 6;
             unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
             unitDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -163,6 +161,7 @@
             // 
             valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
             valueDataGridViewTextBoxColumn.HeaderText = "Value";
+            valueDataGridViewTextBoxColumn.MinimumWidth = 6;
             valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
             valueDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -170,6 +169,7 @@
             // 
             locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
             locationDataGridViewTextBoxColumn.HeaderText = "Location";
+            locationDataGridViewTextBoxColumn.MinimumWidth = 6;
             locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
             locationDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -188,9 +188,9 @@
             // 
             SourceLabel.AutoSize = true;
             SourceLabel.ForeColor = Color.Black;
-            SourceLabel.Location = new Point(16, 81);
+            SourceLabel.Location = new Point(18, 108);
             SourceLabel.Name = "SourceLabel";
-            SourceLabel.Size = new Size(43, 15);
+            SourceLabel.Size = new Size(54, 20);
             SourceLabel.TabIndex = 3;
             SourceLabel.Text = "Source";
             // 
@@ -198,9 +198,9 @@
             // 
             UnitLabel.AutoSize = true;
             UnitLabel.ForeColor = Color.Black;
-            UnitLabel.Location = new Point(19, 130);
+            UnitLabel.Location = new Point(22, 173);
             UnitLabel.Name = "UnitLabel";
-            UnitLabel.Size = new Size(29, 15);
+            UnitLabel.Size = new Size(36, 20);
             UnitLabel.TabIndex = 3;
             UnitLabel.Text = "Unit";
             // 
@@ -208,9 +208,9 @@
             // 
             ValueLabel.AutoSize = true;
             ValueLabel.ForeColor = Color.Black;
-            ValueLabel.Location = new Point(19, 178);
+            ValueLabel.Location = new Point(22, 237);
             ValueLabel.Name = "ValueLabel";
-            ValueLabel.Size = new Size(35, 15);
+            ValueLabel.Size = new Size(45, 20);
             ValueLabel.TabIndex = 3;
             ValueLabel.Text = "Value";
             // 
@@ -218,9 +218,9 @@
             // 
             LocationLabel.AutoSize = true;
             LocationLabel.ForeColor = Color.Black;
-            LocationLabel.Location = new Point(19, 222);
+            LocationLabel.Location = new Point(22, 296);
             LocationLabel.Name = "LocationLabel";
-            LocationLabel.Size = new Size(53, 15);
+            LocationLabel.Size = new Size(66, 20);
             LocationLabel.TabIndex = 3;
             LocationLabel.Text = "Location";
             // 
@@ -228,10 +228,9 @@
             // 
             DeleteButton.Cursor = Cursors.Hand;
             DeleteButton.Enabled = false;
-            DeleteButton.Location = new Point(668, 184);
-            DeleteButton.Margin = new Padding(3, 2, 3, 2);
+            DeleteButton.Location = new Point(763, 245);
             DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(82, 44);
+            DeleteButton.Size = new Size(94, 59);
             DeleteButton.TabIndex = 10;
             DeleteButton.Text = "Delete record";
             DeleteButton.UseVisualStyleBackColor = true;
@@ -239,10 +238,9 @@
             // ImportButton
             // 
             ImportButton.Cursor = Cursors.Hand;
-            ImportButton.Location = new Point(668, 83);
-            ImportButton.Margin = new Padding(3, 2, 3, 2);
+            ImportButton.Location = new Point(763, 111);
             ImportButton.Name = "ImportButton";
-            ImportButton.Size = new Size(82, 44);
+            ImportButton.Size = new Size(94, 59);
             ImportButton.TabIndex = 8;
             ImportButton.Text = "Import Excel Files";
             ImportButton.UseVisualStyleBackColor = true;
@@ -251,10 +249,9 @@
             // 
             ChangeButton.Cursor = Cursors.Hand;
             ChangeButton.Enabled = false;
-            ChangeButton.Location = new Point(668, 135);
-            ChangeButton.Margin = new Padding(3, 2, 3, 2);
+            ChangeButton.Location = new Point(763, 180);
             ChangeButton.Name = "ChangeButton";
-            ChangeButton.Size = new Size(82, 44);
+            ChangeButton.Size = new Size(94, 59);
             ChangeButton.TabIndex = 9;
             ChangeButton.Text = "Change Record";
             ChangeButton.UseVisualStyleBackColor = true;
@@ -262,10 +259,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(668, 238);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(763, 317);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(88, 70);
+            pictureBox1.Size = new Size(101, 93);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -278,10 +274,9 @@
             CalculationsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             CalculationsButton.Image = (Image)resources.GetObject("CalculationsButton.Image");
             CalculationsButton.ImageAlign = ContentAlignment.MiddleLeft;
-            CalculationsButton.Location = new Point(619, 10);
-            CalculationsButton.Margin = new Padding(3, 2, 3, 2);
+            CalculationsButton.Location = new Point(707, 13);
             CalculationsButton.Name = "CalculationsButton";
-            CalculationsButton.Size = new Size(137, 40);
+            CalculationsButton.Size = new Size(157, 53);
             CalculationsButton.TabIndex = 7;
             CalculationsButton.Text = "Calculations ";
             CalculationsButton.TextAlign = ContentAlignment.MiddleRight;
@@ -295,10 +290,9 @@
             FactorsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             FactorsButton.Image = (Image)resources.GetObject("FactorsButton.Image");
             FactorsButton.ImageAlign = ContentAlignment.MiddleLeft;
-            FactorsButton.Location = new Point(510, 10);
-            FactorsButton.Margin = new Padding(3, 2, 3, 2);
+            FactorsButton.Location = new Point(583, 13);
             FactorsButton.Name = "FactorsButton";
-            FactorsButton.Size = new Size(103, 40);
+            FactorsButton.Size = new Size(118, 53);
             FactorsButton.TabIndex = 7;
             FactorsButton.Text = "Factors ";
             FactorsButton.TextAlign = ContentAlignment.MiddleRight;
@@ -306,22 +300,22 @@
             // 
             // SourceText
             // 
+            SourceText.DropDownStyle = ComboBoxStyle.DropDownList;
             SourceText.FormattingEnabled = true;
             SourceText.Items.AddRange(new object[] { "Petrol", "Diesel oil", "CNG", "LPG", "Purchased heat", "Purchased electricity", "Biogas", "Biopetrol" });
-            SourceText.Location = new Point(19, 95);
-            SourceText.Margin = new Padding(3, 2, 3, 2);
+            SourceText.Location = new Point(22, 127);
             SourceText.Name = "SourceText";
-            SourceText.Size = new Size(110, 23);
+            SourceText.Size = new Size(125, 28);
             SourceText.TabIndex = 11;
             // 
             // UnitText
             // 
+            UnitText.DropDownStyle = ComboBoxStyle.DropDownList;
             UnitText.FormattingEnabled = true;
             UnitText.Items.AddRange(new object[] { "kWh", "GJ", "m3", "l", "t" });
-            UnitText.Location = new Point(19, 147);
-            UnitText.Margin = new Padding(3, 2, 3, 2);
+            UnitText.Location = new Point(22, 196);
             UnitText.Name = "UnitText";
-            UnitText.Size = new Size(110, 23);
+            UnitText.Size = new Size(125, 28);
             UnitText.TabIndex = 12;
             // 
             // panel1
@@ -331,10 +325,9 @@
             panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(CalculationsButton);
             panel1.Controls.Add(FactorsButton);
-            panel1.Location = new Point(0, 9);
-            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Location = new Point(0, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(760, 54);
+            panel1.Size = new Size(869, 72);
             panel1.TabIndex = 13;
             // 
             // label1
@@ -342,19 +335,18 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Transparent;
-            label1.Location = new Point(74, 16);
+            label1.Location = new Point(85, 21);
             label1.Name = "label1";
-            label1.Size = new Size(339, 30);
+            label1.Size = new Size(430, 38);
             label1.TabIndex = 10;
             label1.Text = "Calculate your carbon footprint";
             // 
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(9, 10);
-            pictureBox4.Margin = new Padding(3, 2, 3, 2);
+            pictureBox4.Location = new Point(10, 13);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(60, 44);
+            pictureBox4.Size = new Size(69, 59);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
@@ -366,8 +358,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { optionsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(760, 24);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
+            menuStrip1.Size = new Size(869, 30);
             menuStrip1.TabIndex = 14;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -377,42 +369,42 @@
             optionsToolStripMenuItem.ForeColor = Color.White;
             optionsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new Size(61, 20);
+            optionsToolStripMenuItem.Size = new Size(75, 24);
             optionsToolStripMenuItem.Text = "Options";
             // 
             // instructionToolStripMenuItem
             // 
             instructionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fileManualToolStripMenuItem, methodologyToolStripMenuItem });
             instructionToolStripMenuItem.Name = "instructionToolStripMenuItem";
-            instructionToolStripMenuItem.Size = new Size(145, 22);
+            instructionToolStripMenuItem.Size = new Size(180, 26);
             instructionToolStripMenuItem.Text = "Instruction";
             // 
             // fileManualToolStripMenuItem
             // 
             fileManualToolStripMenuItem.Name = "fileManualToolStripMenuItem";
-            fileManualToolStripMenuItem.Size = new Size(146, 22);
+            fileManualToolStripMenuItem.Size = new Size(182, 26);
             fileManualToolStripMenuItem.Text = "File manual";
             // 
             // methodologyToolStripMenuItem
             // 
             methodologyToolStripMenuItem.Name = "methodologyToolStripMenuItem";
-            methodologyToolStripMenuItem.Size = new Size(146, 22);
+            methodologyToolStripMenuItem.Size = new Size(182, 26);
             methodologyToolStripMenuItem.Text = "Methodology";
             methodologyToolStripMenuItem.Click += methodologyToolStripMenuItem_Click;
             // 
             // aboutAuthorToolStripMenuItem
             // 
             aboutAuthorToolStripMenuItem.Name = "aboutAuthorToolStripMenuItem";
-            aboutAuthorToolStripMenuItem.Size = new Size(145, 22);
+            aboutAuthorToolStripMenuItem.Size = new Size(180, 26);
             aboutAuthorToolStripMenuItem.Text = "About author";
             aboutAuthorToolStripMenuItem.Click += aboutAuthorToolStripMenuItem_Click;
             // 
             // EmissionForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(760, 317);
+            ClientSize = new Size(869, 423);
             Controls.Add(UnitText);
             Controls.Add(SourceText);
             Controls.Add(pictureBox1);
@@ -431,7 +423,7 @@
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
             Name = "EmissionForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Carbon Footprint Tool";

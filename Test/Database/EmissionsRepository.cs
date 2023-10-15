@@ -25,21 +25,22 @@ namespace Test.Database
 
         // Dodawanie emisji do grida na pierwszej formie
         public void AddRecord(EmissionModel emission)
-        {
-            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
-            {
-                cnn.Open();
-                using (IDbCommand cmd = cnn.CreateCommand())
+        {          
+                using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
                 {
-                    cmd.CommandText = $"INSERT INTO {_tableName} (Source, Unit, Value, Location) VALUES (@Source, @Unit, @Value, @Location)";
-                    cmd.Parameters.Add(new SqliteParameter("@Source", emission.Source));
-                    cmd.Parameters.Add(new SqliteParameter("@Unit", emission.Unit));
-                    cmd.Parameters.Add(new SqliteParameter("@Value", emission.Value));
-                    cmd.Parameters.Add(new SqliteParameter("@Location", emission.Location));
-                    cmd.ExecuteNonQuery();
+                    cnn.Open();
+                    using (IDbCommand cmd = cnn.CreateCommand())
+                    {
+                        cmd.CommandText = $"INSERT INTO {_tableName} (Source, Unit, Value, Location) VALUES (@Source, @Unit, @Value, @Location)";
+                        cmd.Parameters.Add(new SqliteParameter("@Source", emission.Source));
+                        cmd.Parameters.Add(new SqliteParameter("@Unit", emission.Unit));
+                        cmd.Parameters.Add(new SqliteParameter("@Value", emission.Value));
+                        cmd.Parameters.Add(new SqliteParameter("@Location", emission.Location));
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-            }
-        }
+            }           
+        
 
         // Pobieranie danych o emisjach żeby dodać je do grida na pierwszej formie
         public List<EmissionModel> GetAllEmissions()

@@ -1,4 +1,5 @@
-﻿using Test.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Test.Models;
 
 namespace Test.Views
 {
@@ -9,6 +10,9 @@ namespace Test.Views
         //I deklaracja eventów oraz metod, które coś robią na Formie
         public string Source { get; set; }
         public string Unit { get; set; }
+
+        [Required]
+        [Range(0, 100, ErrorMessage = "Wprowadź wartość od 0 do 100")]
         public double Value { get; set; }
         public string Location { get; set; }
         public EmissionModel CurrentRecord { get; }
@@ -23,6 +27,6 @@ namespace Test.Views
 
         void ShowMessage(string message);
 
-        //void ClearForm (po dodaniu recordu wyczyść pola)
+        
     }
 }
