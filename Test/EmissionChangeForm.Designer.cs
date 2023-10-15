@@ -39,8 +39,8 @@
             label4 = new Label();
             label5 = new Label();
             SubmitButton = new Button();
-            ChangeSourceText = new ComboBox();
             ChangeUnitText = new ComboBox();
+            ChangeSourceText = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
@@ -137,16 +137,6 @@
             SubmitButton.Text = "Submit";
             SubmitButton.UseVisualStyleBackColor = true;
             // 
-            // ChangeSourceText
-            // 
-            ChangeSourceText.DropDownStyle = ComboBoxStyle.DropDownList;
-            ChangeSourceText.FormattingEnabled = true;
-            ChangeSourceText.Items.AddRange(new object[] { "Petrol", "Diesel oil", "CNG", "LPG", "Purchased heat", "Purchased electricity", "Biogas", "Biopetrol" });
-            ChangeSourceText.Location = new Point(133, 80);
-            ChangeSourceText.Name = "ChangeSourceText";
-            ChangeSourceText.Size = new Size(143, 28);
-            ChangeSourceText.TabIndex = 6;
-            // 
             // ChangeUnitText
             // 
             ChangeUnitText.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -157,13 +147,23 @@
             ChangeUnitText.Size = new Size(143, 28);
             ChangeUnitText.TabIndex = 7;
             // 
+            // ChangeSourceText
+            // 
+            ChangeSourceText.DropDownStyle = ComboBoxStyle.DropDownList;
+            ChangeSourceText.FormattingEnabled = true;
+            ChangeSourceText.Items.AddRange(new object[] { "Petrol", "Diesel oil", "CNG", "LPG", "Purchased heat", "Purchased electricity", "Biogas", "Biopetrol" });
+            ChangeSourceText.Location = new Point(133, 79);
+            ChangeSourceText.Name = "ChangeSourceText";
+            ChangeSourceText.Size = new Size(143, 28);
+            ChangeSourceText.TabIndex = 7;
+            // 
             // EmissionChangeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(309, 285);
-            Controls.Add(ChangeUnitText);
             Controls.Add(ChangeSourceText);
+            Controls.Add(ChangeUnitText);
             Controls.Add(SubmitButton);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -194,8 +194,8 @@
         private Label label4;
         private Label label5;
         private Button SubmitButton;
-        private ComboBox ChangeSourceText;
         private ComboBox ChangeUnitText;
         private PictureBox pictureBox4;
+        private ComboBox ChangeSourceText;
     }
 }

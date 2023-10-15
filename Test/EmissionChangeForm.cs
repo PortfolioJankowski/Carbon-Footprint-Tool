@@ -6,9 +6,10 @@ namespace Test
 {
     public partial class EmissionChangeForm : Form, IEmissionChangeView
     {
+        public event EventHandler SubmitButtonClicked;
+
         //Deklaruje sobie zmienną, do której przesyłam ID zaznaczonego rekordu
         private int _id;
-        private EmissionForm _form;
         private EmissionChangePresenter _presenter;
 
         public EmissionChangeForm(EmissionModel model)
@@ -41,9 +42,20 @@ namespace Test
 
         public double Value
         {
-            get => double.Parse(ChangeValueText.Text);
+            get
+            {
+                if (double.TryParse(ChangeValueText.Text, out double result))
+                {
+                    return result;
+                }
+                else
+                {
+                    return -1.0;
+                }
+            }
             set => ChangeValueText.Text = value.ToString();
         }
+
         public string EmissionLocation
         {
             get => ChangeLocationText.Text;
@@ -56,7 +68,5 @@ namespace Test
             set => throw new NotImplementedException();
         }
 
-
-        public event EventHandler SubmitButtonClicked;
     }
 }

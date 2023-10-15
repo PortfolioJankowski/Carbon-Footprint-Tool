@@ -11,8 +11,6 @@ namespace Test.Views
         public string Source { get; set; }
         public string Unit { get; set; }
 
-        [Required]
-        [Range(0, 100, ErrorMessage = "Wprowadź wartość od 0 do 100")]
         public double Value { get; set; }
         public string Location { get; set; }
         public EmissionModel CurrentRecord { get; }
@@ -22,10 +20,11 @@ namespace Test.Views
         event EventHandler EmissionChangeFormLoaded;
         event EventHandler Activated;
         event EventHandler DeleteButtonClicked;
+        event EventHandler ImportButtonClicked;
 
         void DisplayData(List<EmissionModel> emissions);
 
-        void ShowMessage(string message);
+      
 
         
     }

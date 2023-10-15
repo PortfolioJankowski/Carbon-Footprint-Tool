@@ -9,7 +9,7 @@
         string EmissionLocation { get; set; }
 
         event EventHandler SubmitButtonClicked;
-        void Close();
+
 
     }
 }

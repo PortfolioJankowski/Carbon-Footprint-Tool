@@ -10,6 +10,7 @@ namespace Test.Presenters
         private IEmissionChangeView _view;
         private readonly EmissionsRepository _dbConnector;
 
+
         public EmissionChangePresenter(EmissionsRepository connector)
         {
             _dbConnector = connector;
@@ -17,25 +18,15 @@ namespace Test.Presenters
 
         private void ChangeRecordAndCloseForm(object? sender, EventArgs e)
         {
-              try
-            { EmissionModel emission = new EmissionModel();
-
-                emission.Value = _view.Value;
-                _dbConnector.UpdateRecord(_view.Id, _view.Source, _view.Unit, _view.Value, _view.EmissionLocation);
-                _view.Close();
-
-            }
-            catch (Exception ex)
+            if (_view.Value == -1.0)
             {
-                MessageBox.Show("Value field must be numeric", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Value field must be numeric", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);                
             }
-
-
-
-                    
-
-               
-            
+            else
+            {
+                _dbConnector.UpdateRecord(_view.Id, _view.Source, _view.Unit, _view.Value, _view.EmissionLocation);
+                
+            }          
         }
 
         public void SetView(IEmissionChangeView view)

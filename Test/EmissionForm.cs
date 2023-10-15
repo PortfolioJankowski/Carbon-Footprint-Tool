@@ -9,12 +9,14 @@ namespace Test
     {
         //Prezenter - ³¹cznik miêdzy widokiem a modelami
         private readonly IEmissionPresenter _presenter;
+        
 
         //Eventy
         public event EventHandler AddButtonClicked;
         public event EventHandler FormLoaded;
         public event EventHandler EmissionChangeFormLoaded;
         public event EventHandler DeleteButtonClicked;
+        public event EventHandler ImportButtonClicked;
 
         public EmissionForm()
         {
@@ -28,6 +30,7 @@ namespace Test
             DeleteButton.Click += (sender, e) => DeleteButtonClicked?.Invoke(sender, e);
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
+            ImportButton.Click += (sender, e) => ImportButtonClicked?.Invoke(sender, e);
         }
 
         //Pobieranie danych z Textboxów z formy
@@ -68,8 +71,8 @@ namespace Test
         public void DisplayData(List<EmissionModel> emissions)
         {
             //Czyszczenie formy
-            SourceText.Text = "";
-            UnitText.Text = "";
+            SourceText.SelectedIndex = -1;
+            UnitText.SelectedIndex = -1;
             ValueText.Text = "";
             LocationText.Text = "";
 
@@ -104,7 +107,7 @@ namespace Test
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Wyst¹pi³ b³¹d: " + ex.Message);
+                Console.WriteLine("Error occured: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
