@@ -15,7 +15,7 @@ namespace Test.Database
         public EmissionsRepository()
         {
             _connectionString = LoadConnectionString();
-            _tableName = "EmissionsTbl";
+            _tableName = "EmissionsTbl";          
         }
 
         public string LoadConnectionString(string id = "Default")
@@ -48,6 +48,14 @@ namespace Test.Database
             using (IDbConnection cnn = new SQLiteConnection(_connectionString))
             {
                 return cnn.Query<EmissionModel>($"Select Id AS ID, Source, Unit, Value, Location from {_tableName}").ToList();
+            }
+        }
+
+        public List<FactorModel> GetAllFactors()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(_connectionString))
+            {
+                return cnn.Query<FactorModel>("SELECT * FROM FactorsTbl").ToList();
             }
         }
 

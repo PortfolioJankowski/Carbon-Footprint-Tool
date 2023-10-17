@@ -24,10 +24,18 @@ namespace Test.Presenters
             _view.EmissionChangeFormLoaded += ChangeEmission;
             _view.DeleteButtonClicked += DeleteRecord;
             _view.ImportButtonClicked += OpenFolder;
-        }
+            _view.FactorsFormLoaded += ShowFactors;
 
+
+        }
+        private void ShowFactors(object? sender, EventArgs e)
+        {
+            FactorsForm form = new FactorsForm();
+            form.ShowDialog();
+        }
+ 
         //Pobieranie plików z folderu wybranego przez użytkownika
-        private void OpenFolder(object? sender, EventArgs e)
+            private void OpenFolder(object? sender, EventArgs e)
         {
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {

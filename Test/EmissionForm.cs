@@ -9,7 +9,7 @@ namespace Test
     {
         //Prezenter - ³¹cznik miêdzy widokiem a modelami
         private readonly IEmissionPresenter _presenter;
-        
+
 
         //Eventy
         public event EventHandler AddButtonClicked;
@@ -17,6 +17,7 @@ namespace Test
         public event EventHandler EmissionChangeFormLoaded;
         public event EventHandler DeleteButtonClicked;
         public event EventHandler ImportButtonClicked;
+        public event EventHandler FactorsFormLoaded;
 
         public EmissionForm()
         {
@@ -31,6 +32,7 @@ namespace Test
             Load += (sender, e) => FormLoaded?.Invoke(sender, e);
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
             ImportButton.Click += (sender, e) => ImportButtonClicked?.Invoke(sender, e);
+            FactorsButton.Click += (sender, e) => FactorsFormLoaded?.Invoke(sender, e);
         }
 
         //Pobieranie danych z Textboxów z formy
@@ -58,13 +60,6 @@ namespace Test
         public EmissionModel CurrentRecord
         {
             get => emissionModelBindingSource.Current as EmissionModel;
-        }
-
-
-        // Wyœwietlanie Komunikatów o dodawaniu do grida na pierwszej formie
-        public void ShowMessage(string message)
-        {
-            _ = MessageBox.Show(message);
         }
 
         //Metoda wykonuj¹ca siê przy otwarciu formy oraz przyciœniêciu Add

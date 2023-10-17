@@ -13,14 +13,15 @@ namespace Test.Views
 
         public double Value { get; set; }
         public string Location { get; set; }
-        public EmissionModel CurrentRecord { get; }
-        
+        public EmissionModel CurrentRecord { get; }       
+
         event EventHandler AddButtonClicked;
         event EventHandler FormLoaded;
         event EventHandler EmissionChangeFormLoaded;
         event EventHandler Activated;
         event EventHandler DeleteButtonClicked;
         event EventHandler ImportButtonClicked;
+        event EventHandler FactorsFormLoaded;
 
         void DisplayData(List<EmissionModel> emissions);
 
