@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.Sqlite;
+using OfficeOpenXml.Drawing.Chart;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
@@ -51,14 +52,64 @@ namespace Test.Database
             }
         }
 
+        public decimal GetTotalEmissions()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(_connectionString))
+            {
+                var result = cnn.Query<decimal?>(
+            "SELECT SUM(E.Value * F.Value) " +
+            "FROM EmissionsTbl AS E " +
+            "LEFT JOIN FactorsTbl AS F ON (E.Source = F.Source AND E.Unit = F.Unit)"
+        ).FirstOrDefault();
+
+                // Jeśli result jest null, zwróć 0 jako domyślną wartość
+                return result ?? 0;
+            }
+        }
+
         public List<CalculationModel> GetAllCalculations()
         {
             using (IDbConnection cnn = new SQLiteConnection(_connectionString))
             {
-                return cnn.Query<CalculationModel>("SELECT E.Source AS EmissionsSource, E.Value AS EmissionsValue, E.Unit AS EmissionsUnit,E.Location AS Location, E.Value * F.Value as Result FROM EmissionsTbl AS E LEFT JOIN FactorsTbl AS F ON (E.Source = F.Source AND E.Unit = F.Unit) OR (E.Source LIKE 'Electricity%' AND F.Source = 'Electricity' AND E.Unit = F.Unit)").ToList();
+                return cnn.Query<CalculationModel>(
+                    "SELECT E.Source,E.Unit, E.Value, E.Value * F.Value as Result, E.Location " +
+                    "FROM EmissionsTbl AS E " +
+                    "LEFT JOIN FactorsTbl AS F" +
+                    " ON (E.Source = F.Source AND E.Unit = F.Unit)").ToList();
             }
         }
 
+        public List<PieChartDataModel> GetPieChartData()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(_connectionString))
+            {
+                var results = cnn.Query<PieChartDataModel>(
+                    "SELECT E.Location, SUM(E.Value * F.Value) AS TotalResult " +
+                    "FROM EmissionsTbl AS E " +
+                    "LEFT JOIN FactorsTbl AS F " +
+                    "ON (E.Source = F.Source AND E.Unit = F.Unit) " +
+                    "GROUP BY E.Location"
+                ).ToList();
+
+                return results;
+            }
+        }
+
+        public List<LineChartDataModel> GetLineChartData()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(_connectionString))
+            {
+                var results = cnn.Query<LineChartDataModel>(
+                    "SELECT E.Source, SUM(E.Value * F.Value) AS TotalResult " +
+                    "FROM EmissionsTbl AS E " +
+                    "LEFT JOIN FactorsTbl AS F " +
+                    "ON (E.Source = F.Source AND E.Unit = F.Unit) " +
+                    "GROUP BY E.Source"
+                ).ToList();
+
+                return results;
+            }
+        }
         public List<FactorModel> GetAllFactors()
         {
             using (IDbConnection cnn = new SQLiteConnection(_connectionString))

@@ -30,19 +30,19 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FactorsForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             FactorsGrid = new DataGridView();
-            factorModelBindingSource = new BindingSource(components);
-            CloseButton = new Button();
             sourceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             valueDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             yearDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             publicationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            factorModelBindingSource = new BindingSource(components);
+            CloseButton = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FactorsGrid).BeginInit();
@@ -85,55 +85,41 @@
             FactorsGrid.AllowUserToAddRows = false;
             FactorsGrid.AllowUserToDeleteRows = false;
             FactorsGrid.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            FactorsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            FactorsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             FactorsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             FactorsGrid.Columns.AddRange(new DataGridViewColumn[] { sourceDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn, valueDataGridViewTextBoxColumn, yearDataGridViewTextBoxColumn, publicationDataGridViewTextBoxColumn });
             FactorsGrid.DataSource = factorModelBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            FactorsGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            FactorsGrid.Location = new Point(21, 84);
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            FactorsGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            FactorsGrid.Location = new Point(12, 74);
             FactorsGrid.Name = "FactorsGrid";
             FactorsGrid.ReadOnly = true;
             FactorsGrid.RowHeadersWidth = 51;
             FactorsGrid.RowTemplate.Height = 29;
-            FactorsGrid.Size = new Size(581, 278);
+            FactorsGrid.Size = new Size(529, 278);
             FactorsGrid.TabIndex = 2;
-            // 
-            // factorModelBindingSource
-            // 
-            factorModelBindingSource.DataSource = typeof(Models.FactorModel);
-            // 
-            // CloseButton
-            // 
-            CloseButton.Location = new Point(277, 368);
-            CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(94, 29);
-            CloseButton.TabIndex = 3;
-            CloseButton.Text = "Close";
-            CloseButton.UseVisualStyleBackColor = true;
-            CloseButton.Click += CloseButton_Click;
             // 
             // sourceDataGridViewTextBoxColumn
             // 
             sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
-            sourceDataGridViewTextBoxColumn.HeaderText = "Emission Source";
+            sourceDataGridViewTextBoxColumn.HeaderText = "Source";
             sourceDataGridViewTextBoxColumn.MinimumWidth = 6;
             sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
             sourceDataGridViewTextBoxColumn.ReadOnly = true;
-            sourceDataGridViewTextBoxColumn.Width = 175;
+            sourceDataGridViewTextBoxColumn.Width = 125;
             // 
             // unitDataGridViewTextBoxColumn
             // 
@@ -171,11 +157,25 @@
             publicationDataGridViewTextBoxColumn.ReadOnly = true;
             publicationDataGridViewTextBoxColumn.Width = 125;
             // 
+            // factorModelBindingSource
+            // 
+            factorModelBindingSource.DataSource = typeof(Models.FactorModel);
+            // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(241, 358);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(94, 29);
+            CloseButton.TabIndex = 3;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
+            // 
             // FactorsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(615, 407);
+            ClientSize = new Size(550, 391);
             Controls.Add(CloseButton);
             Controls.Add(FactorsGrid);
             Controls.Add(panel1);

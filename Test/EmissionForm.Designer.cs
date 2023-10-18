@@ -36,7 +36,6 @@
             LocationText = new TextBox();
             AddButton = new Button();
             EmissionsGrid = new DataGridView();
-            iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sourceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             valueDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -116,7 +115,7 @@
             EmissionsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             EmissionsGrid.ColumnHeadersHeight = 29;
             EmissionsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            EmissionsGrid.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn, sourceDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn, valueDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
+            EmissionsGrid.Columns.AddRange(new DataGridViewColumn[] { sourceDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn, valueDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
             EmissionsGrid.Cursor = Cursors.Hand;
             EmissionsGrid.DataSource = emissionModelBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -141,14 +140,6 @@
             EmissionsGrid.Size = new Size(584, 299);
             EmissionsGrid.TabIndex = 6;
             EmissionsGrid.SelectionChanged += EmissionsGrid_SelectionChanged;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            iDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // sourceDataGridViewTextBoxColumn
             // 
@@ -268,7 +259,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(763, 317);
+            pictureBox1.Location = new Point(763, 314);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(101, 93);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -476,7 +467,6 @@
         private PictureBox pictureBox4;
         private Label label1;
         private BindingSource emissionModelBindingSource;
-        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sourceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
