@@ -51,6 +51,14 @@ namespace Test.Database
             }
         }
 
+        public List<CalculationModel> GetAllCalculations()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(_connectionString))
+            {
+                return cnn.Query<CalculationModel>("SELECT E.Source AS EmissionsSource, E.Value AS EmissionsValue, E.Unit AS EmissionsUnit,E.Location AS Location, E.Value * F.Value as Result FROM EmissionsTbl AS E LEFT JOIN FactorsTbl AS F ON (E.Source = F.Source AND E.Unit = F.Unit) OR (E.Source LIKE 'Electricity%' AND F.Source = 'Electricity' AND E.Unit = F.Unit)").ToList();
+            }
+        }
+
         public List<FactorModel> GetAllFactors()
         {
             using (IDbConnection cnn = new SQLiteConnection(_connectionString))

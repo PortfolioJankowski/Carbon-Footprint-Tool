@@ -311,7 +311,7 @@
             // 
             SourceText.DropDownStyle = ComboBoxStyle.DropDownList;
             SourceText.FormattingEnabled = true;
-            SourceText.Items.AddRange(new object[] { "Petrol", "Diesel oil", "CNG", "LPG", "Purchased heat", "Purchased electricity", "Biogas", "Biopetrol" });
+            SourceText.Items.AddRange(new object[] { "Butane", "CNG", "LPG", "Petrol", "Electricity" });
             SourceText.Location = new Point(22, 127);
             SourceText.Name = "SourceText";
             SourceText.Size = new Size(125, 28);
@@ -321,7 +321,7 @@
             // 
             UnitText.DropDownStyle = ComboBoxStyle.DropDownList;
             UnitText.FormattingEnabled = true;
-            UnitText.Items.AddRange(new object[] { "kWh", "GJ", "m3", "l", "t" });
+            UnitText.Items.AddRange(new object[] { "l", "t", "kWh" });
             UnitText.Location = new Point(22, 196);
             UnitText.Name = "UnitText";
             UnitText.Size = new Size(125, 28);

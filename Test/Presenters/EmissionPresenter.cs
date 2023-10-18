@@ -25,9 +25,17 @@ namespace Test.Presenters
             _view.DeleteButtonClicked += DeleteRecord;
             _view.ImportButtonClicked += OpenFolder;
             _view.FactorsFormLoaded += ShowFactors;
+            _view.CalculationsFormLoaded += ShowCalculations;
 
 
         }
+
+        private void ShowCalculations(object? sender, EventArgs e)
+        {
+            CalculationsForm form = new CalculationsForm();
+            form.ShowDialog();
+        }
+
         private void ShowFactors(object? sender, EventArgs e)
         {
             FactorsForm form = new FactorsForm();

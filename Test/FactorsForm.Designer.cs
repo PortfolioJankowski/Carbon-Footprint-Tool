@@ -109,7 +109,7 @@
             FactorsGrid.ReadOnly = true;
             FactorsGrid.RowHeadersWidth = 51;
             FactorsGrid.RowTemplate.Height = 29;
-            FactorsGrid.Size = new Size(738, 278);
+            FactorsGrid.Size = new Size(581, 278);
             FactorsGrid.TabIndex = 2;
             // 
             // factorModelBindingSource
@@ -118,7 +118,7 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(356, 368);
+            CloseButton.Location = new Point(277, 368);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(94, 29);
             CloseButton.TabIndex = 3;
@@ -142,7 +142,7 @@
             unitDataGridViewTextBoxColumn.MinimumWidth = 6;
             unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
             unitDataGridViewTextBoxColumn.ReadOnly = true;
-            unitDataGridViewTextBoxColumn.Width = 125;
+            unitDataGridViewTextBoxColumn.Width = 50;
             // 
             // valueDataGridViewTextBoxColumn
             // 
@@ -160,7 +160,7 @@
             yearDataGridViewTextBoxColumn.MinimumWidth = 6;
             yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
             yearDataGridViewTextBoxColumn.ReadOnly = true;
-            yearDataGridViewTextBoxColumn.Width = 125;
+            yearDataGridViewTextBoxColumn.Width = 50;
             // 
             // publicationDataGridViewTextBoxColumn
             // 
@@ -175,7 +175,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(771, 407);
+            ClientSize = new Size(615, 407);
             Controls.Add(CloseButton);
             Controls.Add(FactorsGrid);
             Controls.Add(panel1);

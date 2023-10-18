@@ -22,6 +22,7 @@ namespace Test.Views
         event EventHandler DeleteButtonClicked;
         event EventHandler ImportButtonClicked;
         event EventHandler FactorsFormLoaded;
+        event EventHandler CalculationsFormLoaded;
 
         void DisplayData(List<EmissionModel> emissions);
 

@@ -18,6 +18,7 @@ namespace Test
         public event EventHandler DeleteButtonClicked;
         public event EventHandler ImportButtonClicked;
         public event EventHandler FactorsFormLoaded;
+        public event EventHandler CalculationsFormLoaded;
 
         public EmissionForm()
         {
@@ -33,6 +34,7 @@ namespace Test
             ChangeButton.Click += (sender, e) => EmissionChangeFormLoaded?.Invoke(sender, e);
             ImportButton.Click += (sender, e) => ImportButtonClicked?.Invoke(sender, e);
             FactorsButton.Click += (sender, e) => FactorsFormLoaded?.Invoke(sender, e);
+            CalculationsButton.Click += (sender, e) => CalculationsFormLoaded?.Invoke(sender, e);
         }
 
         //Pobieranie danych z Textboxów z formy
