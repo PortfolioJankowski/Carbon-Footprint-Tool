@@ -8,12 +8,25 @@ namespace Test.Presenters
         private IFactorView _view;
         private EmissionsRepository _db;
 
-        public FactorPresenter(IFactorView view)
+        public FactorPresenter(EmissionsRepository db)
         {
-            var factors = _db.GetAllFactors;
-            _view = view;
-            _view.DisplayData(factors);
+            _db = db;                
         }
-        
+
+        public void SetView(IFactorView view)
+        {
+            _view = view;
+            _view.CloseFactorForm += CloseForm;
+
+            //Wyświetlam na gridzie
+            var factors = _db.GetAllFactors();
+            _view.DisplayData(factors);
+            
+        }
+
+        private void CloseForm(object? sender, EventArgs e)
+        {
+            _view.Close();
+        }
     }
 }

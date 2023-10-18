@@ -9,6 +9,7 @@ namespace Test.Presenters
 {
     public interface IFactorPresenter
     {
+        void SetView(IFactorView view);
         
     }
 }
