@@ -184,14 +184,7 @@ namespace Test.Presenters
             catch (Exception ex)
             {
                 MessageBox.Show("Value field is numeric", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                
-                
-
-                
-
-                
-           
+            }   
         }
     }
 }

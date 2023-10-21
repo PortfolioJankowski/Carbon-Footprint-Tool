@@ -32,7 +32,6 @@
     <PackageReference Include="Dapper" Version="2.1.4" />
     <PackageReference Include="EPP.PresentationCore" Version="1.0.0" />
     <PackageReference Include="EPPlus" Version="6.2.10" />
-    <PackageReference Include="Furysoft.IQuery" Version="1.0.2" />
     <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.12" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.12" />

@@ -56,7 +56,9 @@
             panel2 = new Panel();
             label3 = new Label();
             LocationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            pieChartDataModelBindingSource = new BindingSource(components);
             SourceChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            lineChartDataModelBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)CalculationsGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)calculationModelBindingSource).BeginInit();
             panel1.SuspendLayout();
@@ -65,7 +67,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LocationChart).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pieChartDataModelBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SourceChart).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lineChartDataModelBindingSource).BeginInit();
             SuspendLayout();
             // 
             // CalculationsGrid
@@ -94,12 +98,13 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             CalculationsGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            CalculationsGrid.Location = new Point(27, 82);
+            CalculationsGrid.Location = new Point(24, 62);
+            CalculationsGrid.Margin = new Padding(3, 2, 3, 2);
             CalculationsGrid.Name = "CalculationsGrid";
             CalculationsGrid.ReadOnly = true;
             CalculationsGrid.RowHeadersWidth = 51;
             CalculationsGrid.RowTemplate.Height = 29;
-            CalculationsGrid.Size = new Size(554, 158);
+            CalculationsGrid.Size = new Size(485, 118);
             CalculationsGrid.TabIndex = 0;
             // 
             // sourceDataGridViewTextBoxColumn
@@ -153,9 +158,10 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(401, 395);
+            CloseButton.Location = new Point(351, 296);
+            CloseButton.Margin = new Padding(3, 2, 3, 2);
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(94, 29);
+            CloseButton.Size = new Size(82, 22);
             CloseButton.TabIndex = 1;
             CloseButton.Text = "Close";
             CloseButton.UseVisualStyleBackColor = true;
@@ -165,17 +171,19 @@
             panel1.BackColor = Color.DarkOliveGreen;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(-139, -12);
+            panel1.Location = new Point(-122, -9);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1199, 73);
+            panel1.Size = new Size(1049, 55);
             panel1.TabIndex = 2;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(151, 13);
+            pictureBox1.Location = new Point(132, 10);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(91, 60);
+            pictureBox1.Size = new Size(80, 45);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -185,18 +193,19 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(248, 33);
+            label1.Location = new Point(217, 25);
             label1.Name = "label1";
-            label1.Size = new Size(299, 25);
+            label1.Size = new Size(245, 20);
             label1.TabIndex = 0;
             label1.Text = "Calculations and Data visualisation";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(12, 67);
+            pictureBox2.Location = new Point(10, 50);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(37, 35);
+            pictureBox2.Size = new Size(32, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
@@ -204,9 +213,10 @@
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(-1, 3);
+            pictureBox5.Location = new Point(-1, 2);
+            pictureBox5.Margin = new Padding(3, 2, 3, 2);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(78, 61);
+            pictureBox5.Size = new Size(68, 46);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 4;
             pictureBox5.TabStop = false;
@@ -215,9 +225,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(101, 16);
+            label2.Location = new Point(88, 12);
             label2.Name = "label2";
-            label2.Size = new Size(164, 20);
+            label2.Size = new Size(126, 15);
             label2.TabIndex = 5;
             label2.Text = "Total Carbon Footprint";
             // 
@@ -226,9 +236,9 @@
             TotalLabel.AutoSize = true;
             TotalLabel.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point);
             TotalLabel.ForeColor = Color.Red;
-            TotalLabel.Location = new Point(101, 47);
+            TotalLabel.Location = new Point(88, 35);
             TotalLabel.Name = "TotalLabel";
-            TotalLabel.Size = new Size(141, 54);
+            TotalLabel.Size = new Size(116, 45);
             TotalLabel.TabIndex = 6;
             TotalLabel.Text = "label3";
             // 
@@ -239,18 +249,19 @@
             panel2.Controls.Add(TotalLabel);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(587, 82);
+            panel2.Location = new Point(514, 62);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(311, 133);
+            panel2.Size = new Size(272, 100);
             panel2.TabIndex = 8;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(144, 101);
+            label3.Location = new Point(126, 76);
             label3.Name = "label3";
-            label3.Size = new Size(54, 20);
+            label3.Size = new Size(43, 15);
             label3.TabIndex = 5;
             label3.Text = "t CO2e";
             // 
@@ -262,16 +273,23 @@
             LocationChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             LocationChart.Legends.Add(legend1);
-            LocationChart.Location = new Point(587, 221);
+            LocationChart.Location = new Point(514, 166);
+            LocationChart.Margin = new Padding(3, 2, 3, 2);
             LocationChart.Name = "LocationChart";
             LocationChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
+            series1.XValueMember = "Location";
+            series1.YValueMembers = "TotalResult";
             LocationChart.Series.Add(series1);
-            LocationChart.Size = new Size(311, 203);
+            LocationChart.Size = new Size(272, 152);
             LocationChart.TabIndex = 9;
             LocationChart.Text = "chart1";
+            // 
+            // pieChartDataModelBindingSource
+            // 
+            pieChartDataModelBindingSource.DataSource = typeof(Models.PieChartDataModel);
             // 
             // SourceChart
             // 
@@ -279,22 +297,29 @@
             SourceChart.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             SourceChart.Legends.Add(legend2);
-            SourceChart.Location = new Point(27, 246);
+            SourceChart.Location = new Point(24, 184);
+            SourceChart.Margin = new Padding(3, 2, 3, 2);
             SourceChart.Name = "SourceChart";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
+            series2.XValueMember = "Source";
+            series2.YValueMembers = "TotalResult";
             SourceChart.Series.Add(series2);
-            SourceChart.Size = new Size(539, 155);
+            SourceChart.Size = new Size(472, 116);
             SourceChart.TabIndex = 10;
             SourceChart.Text = "chart1";
             // 
+            // lineChartDataModelBindingSource
+            // 
+            lineChartDataModelBindingSource.DataSource = typeof(Models.LineChartDataModel);
+            // 
             // CalculationsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(903, 428);
+            ClientSize = new Size(790, 321);
             Controls.Add(CloseButton);
             Controls.Add(SourceChart);
             Controls.Add(LocationChart);
@@ -303,6 +328,7 @@
             Controls.Add(CalculationsGrid);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "CalculationsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard";
@@ -316,7 +342,9 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)LocationChart).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pieChartDataModelBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)SourceChart).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lineChartDataModelBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -343,5 +371,7 @@
         private DataGridViewTextBoxColumn Location;
         private System.Windows.Forms.DataVisualization.Charting.Chart LocationChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart SourceChart;
+        private BindingSource lineChartDataModelBindingSource;
+        private BindingSource pieChartDataModelBindingSource;
     }
 }
