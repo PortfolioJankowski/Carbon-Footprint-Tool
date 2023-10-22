@@ -47,7 +47,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.DarkOliveGreen;
+            panel1.BackColor = Color.SeaGreen;
             panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(-22, 0);
@@ -130,6 +130,7 @@
             // 
             SubmitButton.Cursor = Cursors.Hand;
             SubmitButton.DialogResult = DialogResult.OK;
+            SubmitButton.FlatStyle = FlatStyle.Flat;
             SubmitButton.Location = new Point(109, 232);
             SubmitButton.Name = "SubmitButton";
             SubmitButton.Size = new Size(94, 29);
@@ -161,6 +162,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(309, 285);
             Controls.Add(ChangeSourceText);
             Controls.Add(ChangeUnitText);

@@ -30,6 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmissionForm));
             ValueText = new TextBox();
@@ -73,14 +76,14 @@
             // 
             // ValueText
             // 
-            ValueText.Location = new Point(22, 261);
+            ValueText.Location = new Point(12, 277);
             ValueText.Name = "ValueText";
             ValueText.Size = new Size(125, 27);
             ValueText.TabIndex = 3;
             // 
             // LocationText
             // 
-            LocationText.Location = new Point(22, 317);
+            LocationText.Location = new Point(12, 348);
             LocationText.Name = "LocationText";
             LocationText.Size = new Size(125, 27);
             LocationText.TabIndex = 4;
@@ -88,8 +91,9 @@
             // AddButton
             // 
             AddButton.Cursor = Cursors.Hand;
+            AddButton.FlatStyle = FlatStyle.Flat;
             AddButton.ImageAlign = ContentAlignment.TopRight;
-            AddButton.Location = new Point(40, 361);
+            AddButton.Location = new Point(29, 394);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(94, 29);
             AddButton.TabIndex = 5;
@@ -104,46 +108,59 @@
             EmissionsGrid.AllowUserToResizeRows = false;
             EmissionsGrid.AutoGenerateColumns = false;
             EmissionsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            EmissionsGrid.BackgroundColor = SystemColors.ActiveCaption;
+            EmissionsGrid.BackgroundColor = Color.White;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gold;
+            dataGridViewCellStyle1.BackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             EmissionsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            EmissionsGrid.ColumnHeadersHeight = 29;
+            EmissionsGrid.ColumnHeadersHeight = 40;
             EmissionsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             EmissionsGrid.Columns.AddRange(new DataGridViewColumn[] { sourceDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn, valueDataGridViewTextBoxColumn, locationDataGridViewTextBoxColumn });
             EmissionsGrid.Cursor = Cursors.Hand;
             EmissionsGrid.DataSource = emissionModelBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.PeachPuff;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            EmissionsGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            EmissionsGrid.DefaultCellStyle = dataGridViewCellStyle3;
             EmissionsGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
-            EmissionsGrid.GridColor = SystemColors.ActiveCaptionText;
-            EmissionsGrid.Location = new Point(166, 108);
+            EmissionsGrid.EnableHeadersVisualStyles = false;
+            EmissionsGrid.GridColor = Color.White;
+            EmissionsGrid.Location = new Point(163, 107);
             EmissionsGrid.MultiSelect = false;
             EmissionsGrid.Name = "EmissionsGrid";
             EmissionsGrid.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            EmissionsGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             EmissionsGrid.RowHeadersWidth = 10;
             EmissionsGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            EmissionsGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
             EmissionsGrid.RowTemplate.Height = 29;
             EmissionsGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             EmissionsGrid.ShowCellErrors = false;
-            EmissionsGrid.Size = new Size(584, 299);
+            EmissionsGrid.Size = new Size(635, 347);
             EmissionsGrid.TabIndex = 6;
             EmissionsGrid.SelectionChanged += EmissionsGrid_SelectionChanged;
             // 
             // sourceDataGridViewTextBoxColumn
             // 
             sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
+            dataGridViewCellStyle2.BackColor = Color.White;
+            sourceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             sourceDataGridViewTextBoxColumn.HeaderText = "Source";
             sourceDataGridViewTextBoxColumn.MinimumWidth = 6;
             sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
@@ -188,7 +205,7 @@
             // 
             SourceLabel.AutoSize = true;
             SourceLabel.ForeColor = Color.Black;
-            SourceLabel.Location = new Point(18, 108);
+            SourceLabel.Location = new Point(12, 119);
             SourceLabel.Name = "SourceLabel";
             SourceLabel.Size = new Size(54, 20);
             SourceLabel.TabIndex = 3;
@@ -198,7 +215,7 @@
             // 
             UnitLabel.AutoSize = true;
             UnitLabel.ForeColor = Color.Black;
-            UnitLabel.Location = new Point(22, 173);
+            UnitLabel.Location = new Point(12, 188);
             UnitLabel.Name = "UnitLabel";
             UnitLabel.Size = new Size(36, 20);
             UnitLabel.TabIndex = 3;
@@ -208,7 +225,7 @@
             // 
             ValueLabel.AutoSize = true;
             ValueLabel.ForeColor = Color.Black;
-            ValueLabel.Location = new Point(22, 237);
+            ValueLabel.Location = new Point(18, 254);
             ValueLabel.Name = "ValueLabel";
             ValueLabel.Size = new Size(45, 20);
             ValueLabel.TabIndex = 3;
@@ -218,7 +235,7 @@
             // 
             LocationLabel.AutoSize = true;
             LocationLabel.ForeColor = Color.Black;
-            LocationLabel.Location = new Point(22, 296);
+            LocationLabel.Location = new Point(12, 326);
             LocationLabel.Name = "LocationLabel";
             LocationLabel.Size = new Size(66, 20);
             LocationLabel.TabIndex = 3;
@@ -228,9 +245,10 @@
             // 
             DeleteButton.Cursor = Cursors.Hand;
             DeleteButton.Enabled = false;
-            DeleteButton.Location = new Point(763, 245);
+            DeleteButton.FlatStyle = FlatStyle.Flat;
+            DeleteButton.Location = new Point(818, 266);
             DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(94, 59);
+            DeleteButton.Size = new Size(101, 59);
             DeleteButton.TabIndex = 10;
             DeleteButton.Text = "Delete record";
             DeleteButton.UseVisualStyleBackColor = true;
@@ -238,9 +256,10 @@
             // ImportButton
             // 
             ImportButton.Cursor = Cursors.Hand;
-            ImportButton.Location = new Point(763, 111);
+            ImportButton.FlatStyle = FlatStyle.Flat;
+            ImportButton.Location = new Point(818, 111);
             ImportButton.Name = "ImportButton";
-            ImportButton.Size = new Size(94, 59);
+            ImportButton.Size = new Size(101, 64);
             ImportButton.TabIndex = 8;
             ImportButton.Text = "Import Excel Files";
             ImportButton.UseVisualStyleBackColor = true;
@@ -249,9 +268,10 @@
             // 
             ChangeButton.Cursor = Cursors.Hand;
             ChangeButton.Enabled = false;
-            ChangeButton.Location = new Point(763, 180);
+            ChangeButton.FlatStyle = FlatStyle.Flat;
+            ChangeButton.Location = new Point(818, 193);
             ChangeButton.Name = "ChangeButton";
-            ChangeButton.Size = new Size(94, 59);
+            ChangeButton.Size = new Size(101, 59);
             ChangeButton.TabIndex = 9;
             ChangeButton.Text = "Change Record";
             ChangeButton.UseVisualStyleBackColor = true;
@@ -259,9 +279,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(763, 314);
+            pictureBox1.Location = new Point(804, 344);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(101, 93);
+            pictureBox1.Size = new Size(132, 110);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -272,14 +292,12 @@
             CalculationsButton.Cursor = Cursors.Hand;
             CalculationsButton.FlatStyle = FlatStyle.Flat;
             CalculationsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            CalculationsButton.Image = (Image)resources.GetObject("CalculationsButton.Image");
             CalculationsButton.ImageAlign = ContentAlignment.MiddleLeft;
-            CalculationsButton.Location = new Point(707, 13);
+            CalculationsButton.Location = new Point(800, 17);
             CalculationsButton.Name = "CalculationsButton";
-            CalculationsButton.Size = new Size(157, 53);
+            CalculationsButton.Size = new Size(132, 47);
             CalculationsButton.TabIndex = 7;
             CalculationsButton.Text = "Calculations ";
-            CalculationsButton.TextAlign = ContentAlignment.MiddleRight;
             CalculationsButton.UseVisualStyleBackColor = false;
             // 
             // FactorsButton
@@ -288,14 +306,12 @@
             FactorsButton.Cursor = Cursors.Hand;
             FactorsButton.FlatStyle = FlatStyle.Flat;
             FactorsButton.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            FactorsButton.Image = (Image)resources.GetObject("FactorsButton.Image");
             FactorsButton.ImageAlign = ContentAlignment.MiddleLeft;
-            FactorsButton.Location = new Point(583, 13);
+            FactorsButton.Location = new Point(659, 18);
             FactorsButton.Name = "FactorsButton";
-            FactorsButton.Size = new Size(118, 53);
+            FactorsButton.Size = new Size(135, 47);
             FactorsButton.TabIndex = 7;
             FactorsButton.Text = "Factors ";
-            FactorsButton.TextAlign = ContentAlignment.MiddleRight;
             FactorsButton.UseVisualStyleBackColor = false;
             // 
             // SourceText
@@ -303,7 +319,7 @@
             SourceText.DropDownStyle = ComboBoxStyle.DropDownList;
             SourceText.FormattingEnabled = true;
             SourceText.Items.AddRange(new object[] { "Butane", "CNG", "LPG", "Petrol", "Electricity" });
-            SourceText.Location = new Point(22, 127);
+            SourceText.Location = new Point(12, 142);
             SourceText.Name = "SourceText";
             SourceText.Size = new Size(125, 28);
             SourceText.TabIndex = 11;
@@ -313,21 +329,21 @@
             UnitText.DropDownStyle = ComboBoxStyle.DropDownList;
             UnitText.FormattingEnabled = true;
             UnitText.Items.AddRange(new object[] { "l", "t", "kWh" });
-            UnitText.Location = new Point(22, 196);
+            UnitText.Location = new Point(12, 211);
             UnitText.Name = "UnitText";
             UnitText.Size = new Size(125, 28);
             UnitText.TabIndex = 12;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.DarkOliveGreen;
+            panel1.BackColor = Color.SeaGreen;
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox4);
-            panel1.Controls.Add(CalculationsButton);
             panel1.Controls.Add(FactorsButton);
+            panel1.Controls.Add(CalculationsButton);
             panel1.Location = new Point(0, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(869, 72);
+            panel1.Size = new Size(942, 68);
             panel1.TabIndex = 13;
             // 
             // label1
@@ -335,7 +351,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Transparent;
-            label1.Location = new Point(85, 21);
+            label1.Location = new Point(78, 18);
             label1.Name = "label1";
             label1.Size = new Size(430, 38);
             label1.TabIndex = 10;
@@ -344,7 +360,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(10, 13);
+            pictureBox4.Location = new Point(3, 13);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(69, 59);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -353,13 +369,13 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = Color.DarkOliveGreen;
+            menuStrip1.BackColor = Color.SeaGreen;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { optionsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(6, 3, 0, 3);
-            menuStrip1.Size = new Size(869, 30);
+            menuStrip1.Size = new Size(936, 30);
             menuStrip1.TabIndex = 14;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -404,11 +420,11 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(869, 423);
+            ClientSize = new Size(936, 468);
             Controls.Add(UnitText);
             Controls.Add(SourceText);
-            Controls.Add(pictureBox1);
             Controls.Add(ImportButton);
+            Controls.Add(pictureBox1);
             Controls.Add(ChangeButton);
             Controls.Add(DeleteButton);
             Controls.Add(LocationLabel);

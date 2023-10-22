@@ -1,6 +1,8 @@
 ﻿using LiveCharts.Wpf;
 using LiveCharts.Wpf.Charts.Base;
+using OfficeOpenXml;
 using System.Windows.Forms.DataVisualization.Charting;
+using Test.Database;
 using Test.Models;
 using Test.Presenters;
 using Test.Services;
@@ -12,6 +14,9 @@ namespace Test
     public partial class CalculationsForm : Form, ICalculationView
     {
         private CalculationPresenter _presenter;
+        private CalculationService _service;
+        private EmissionsRepository _db;
+
         public CalculationsForm()
         {
             InitializeComponent();
@@ -45,9 +50,11 @@ namespace Test
         {
             var chartarea = new ChartArea();
             chartarea.BackColor = Color.Transparent;
+            chartarea.Position.Width = 99; // Ustaw szerokość obszaru wykresu
+            chartarea.Position.Height = 99;
             LocationChart.ChartAreas.Add(chartarea);
             LocationChart.Series["Series1"].ChartType = SeriesChartType.Pie;
-            LocationChart.Size = new System.Drawing.Size(311, 300);
+
 
             foreach (var result in data)
             {
@@ -61,9 +68,11 @@ namespace Test
         {
             var chartarea2 = new ChartArea();
             chartarea2.BackColor = Color.Transparent;
+            chartarea2.Position.Width = 99; // Ustaw szerokość obszaru wykresu
+            chartarea2.Position.Height = 99;
             SourceChart.ChartAreas.Add(chartarea2); // Użyj chartarea2 zamiast chartarea
             SourceChart.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
-            SourceChart.Size = new System.Drawing.Size(554, 300);
+
 
             int position = 0; // Unikalna pozycja dla każdego źródła na osi X
 
@@ -88,5 +97,58 @@ namespace Test
             SourceChart.Legends["Legend1"].Enabled = false;
             SourceChart.BackColor = Color.Transparent;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CalculationService _service = new CalculationService();
+            EmissionsRepository _db = new EmissionsRepository();
+
+            var calculations = _service.GetCalculationModels(_db.GetAllEmissions(), _db.GetAllFactors());
+            // Inicjalizuj SaveFileDialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Pliki Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.Title = "Zapisz jako plik Excel";
+            saveFileDialog.FileName = "Calculations.xlsx"; // Domyślna nazwa pliku
+
+            // Jeśli użytkownik wybierze lokalizację i kliknie OK
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Reszta kodu pozostaje bez zmian
+
+                // Utwórz plik Excel i zapisz dane
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Calculations");
+
+                    // Nagłówki kolumn
+                    worksheet.Cells[1, 1].Value = "Source";
+                    worksheet.Cells[1, 2].Value = "Value";
+                    worksheet.Cells[1, 3].Value = "Unit";
+                    worksheet.Cells[1, 4].Value = "Result";
+                    worksheet.Cells[1, 5].Value = "Location";
+
+                    int row = 2;
+                    foreach (var calculation in calculations)
+                    {
+                        worksheet.Cells[row, 1].Value = calculation.Source;
+                        worksheet.Cells[row, 2].Value = calculation.Value;
+                        worksheet.Cells[row, 3].Value = calculation.Unit;
+                        worksheet.Cells[row, 4].Value = calculation.Result;
+                        worksheet.Cells[row, 5].Value = calculation.Location;
+
+                        row++;
+                    }
+
+                    FileInfo excelFile = new FileInfo(filePath);
+                    package.SaveAs(excelFile);
+                }
+
+                MessageBox.Show("Dane zostały pomyślnie wyeksportowane do pliku Excel.");
+            }
+        }
     }
-}
+    
+ }

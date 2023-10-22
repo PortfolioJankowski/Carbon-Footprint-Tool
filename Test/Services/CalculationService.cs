@@ -4,6 +4,8 @@ namespace Test.Services
 {
     public class CalculationService : ICalculationService
     {
+        
+        
         public List<CalculationModel> GetCalculationModels(List<EmissionModel> emissions, List<FactorModel> factors)
         {
             var result = new List<CalculationModel>();

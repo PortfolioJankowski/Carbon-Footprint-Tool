@@ -30,8 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FactorsForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -51,7 +52,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.DarkOliveGreen;
+            panel1.BackColor = Color.SeaGreen;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(0, -4);
@@ -85,31 +86,44 @@
             FactorsGrid.AllowUserToAddRows = false;
             FactorsGrid.AllowUserToDeleteRows = false;
             FactorsGrid.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            FactorsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            FactorsGrid.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            FactorsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             FactorsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             FactorsGrid.Columns.AddRange(new DataGridViewColumn[] { sourceDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn, valueDataGridViewTextBoxColumn, yearDataGridViewTextBoxColumn, publicationDataGridViewTextBoxColumn });
             FactorsGrid.DataSource = factorModelBindingSource;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            FactorsGrid.DefaultCellStyle = dataGridViewCellStyle4;
-            FactorsGrid.Location = new Point(12, 74);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            FactorsGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            FactorsGrid.EnableHeadersVisualStyles = false;
+            FactorsGrid.GridColor = Color.White;
+            FactorsGrid.Location = new Point(0, 69);
+            FactorsGrid.MultiSelect = false;
             FactorsGrid.Name = "FactorsGrid";
             FactorsGrid.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            FactorsGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             FactorsGrid.RowHeadersWidth = 51;
             FactorsGrid.RowTemplate.Height = 29;
-            FactorsGrid.Size = new Size(529, 278);
+            FactorsGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            FactorsGrid.Size = new Size(568, 278);
             FactorsGrid.TabIndex = 2;
             // 
             // sourceDataGridViewTextBoxColumn
@@ -163,6 +177,7 @@
             // 
             // CloseButton
             // 
+            CloseButton.FlatStyle = FlatStyle.Flat;
             CloseButton.Location = new Point(241, 358);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(94, 29);
@@ -175,7 +190,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(550, 391);
+            BackColor = Color.White;
+            ClientSize = new Size(528, 391);
             Controls.Add(CloseButton);
             Controls.Add(FactorsGrid);
             Controls.Add(panel1);
