@@ -1,3 +1,3 @@
-# Test
+Desktop app for companies to calculate their carbon footprint.
 
-Program for calculation carbon footprint. You can import data from excel to Database, add your own emission and open data visualisation!
+A carbon footprint calculation program. It utilizes C# WinForms and an SQLite database. It allows importing data from Excel and exporting calculations to xlsx files.
